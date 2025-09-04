@@ -3481,8 +3481,8 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   user-select: none;
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   transition: all 0.3s ease;
 }
 @media (max-width: 1024px) {
@@ -3491,8 +3491,8 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
     height: 35px;
   }
   .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn svg {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
   }
 }
 @media (max-width: 768px) {
@@ -3501,8 +3501,8 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
     height: 30px;
   }
   .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
   }
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn:hover {
