@@ -686,6 +686,9 @@ $(function() {
       
       clearInterval(autoPlayInterval);
       $track.css('transition', 'none');
+      
+      // 阻止圖片預設拖曳行為
+      e.preventDefault();
     }
     
     // 觸控移動
@@ -699,23 +702,37 @@ $(function() {
       var deltaX = touchData.currentX - touchData.startX;
       var deltaY = touchData.currentY - touchData.startY;
       
-      // 檢測是否為垂直滾動
-      if (!touchData.moved && Math.abs(deltaY) > Math.abs(deltaX)) {
-        touchData.isVerticalScroll = true;
-        return;
+      // 檢測是否為垂直滾動（只在初次移動時判斷）
+      if (!touchData.moved) {
+        var absX = Math.abs(deltaX);
+        var absY = Math.abs(deltaY);
+        
+        // 如果垂直移動明顯大於水平移動，認為是垂直滾動
+        if (absY > absX && absY > 10) {
+          touchData.isVerticalScroll = true;
+          return;
+        }
+        
+        // 如果水平移動大於5px，開始水平滑動
+        if (absX > 5) {
+          touchData.moved = true;
+          e.preventDefault(); // 阻止垂直滾動
+        }
       }
       
       // 如果是垂直滾動，不處理水平滑動
       if (touchData.isVerticalScroll) return;
       
-      touchData.moved = true;
-      e.preventDefault();
-      
-      // 計算滑動百分比
-      var movePercent = (deltaX / $container.width()) * 100;
-      var newTransform = (-currentSlide * 100) + movePercent;
-      
-      $track.css('transform', 'translateX(' + newTransform + '%)');
+      // 如果已經確定是水平滑動，阻止預設行為
+      if (touchData.moved) {
+        e.preventDefault();
+        
+        // 計算滑動百分比
+        var movePercent = (deltaX / $container.width()) * 100;
+        var newTransform = (-currentSlide * 100) + movePercent;
+        
+        $track.css('transform', 'translateX(' + newTransform + '%)');
+      }
     }
     
     // 觸控結束
@@ -756,17 +773,37 @@ $(function() {
       startAutoPlay();
     }
     
-    // 綁定觸控事件
-    $track.on('touchstart mousedown', function(e) {
+    // 綁定觸控事件 - 分別處理觸控和滑鼠事件
+    $track.on('touchstart', function(e) {
       handleTouchStart(e);
     });
     
-    $track.on('touchmove mousemove', function(e) {
+    $track.on('touchmove', function(e) {
       handleTouchMove(e);
     });
     
-    $track.on('touchend mouseup touchcancel', function(e) {
+    $track.on('touchend touchcancel', function(e) {
       handleTouchEnd(e);
+    });
+    
+    // 滑鼠事件 (桌面版)
+    $track.on('mousedown', function(e) {
+      // 只在非觸控設備上啟用滑鼠拖拽
+      if (!('ontouchstart' in window)) {
+        handleTouchStart(e);
+      }
+    });
+    
+    $(document).on('mousemove', function(e) {
+      if (touchData.isDragging && !('ontouchstart' in window)) {
+        handleTouchMove(e);
+      }
+    });
+    
+    $(document).on('mouseup', function(e) {
+      if (touchData.isDragging && !('ontouchstart' in window)) {
+        handleTouchEnd(e);
+      }
     });
     
     // 防止拖拽時的點擊事件（但允許輕觸圖片）
