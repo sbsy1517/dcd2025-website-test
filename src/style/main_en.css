@@ -2,6 +2,90 @@
 /* ========================================
  * 設計系統變數 - DCD 2025
  * ======================================== */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+.fade.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-fast {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease-out;
+}
+.fade-fast.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-slow {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+.fade-slow.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade_text {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+.fade_text.fade-in {
+  opacity: 1;
+}
+
+.fade_text-fast {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+.fade_text-fast.fade-in {
+  opacity: 1;
+}
+
+.fade_text-slow {
+  opacity: 0;
+  transition: opacity 1.2s ease-out;
+}
+.fade_text-slow.fade-in {
+  opacity: 1;
+}
+
+.fade_fv {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+.fade_fv.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade_sticker {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+.fade_sticker.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @font-face {
   font-family: "GenSenRounded2TW";
   src: url("../font/GenSenRounded2TW-EL.otf") format("opentype");
@@ -58,6 +142,90 @@ body {
 /* ========================================
  * 設計系統變數 - DCD 2025
  * ======================================== */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+.fade.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-fast {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease-out;
+}
+.fade-fast.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-slow {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+.fade-slow.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade_text {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+.fade_text.fade-in {
+  opacity: 1;
+}
+
+.fade_text-fast {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+.fade_text-fast.fade-in {
+  opacity: 1;
+}
+
+.fade_text-slow {
+  opacity: 0;
+  transition: opacity 1.2s ease-out;
+}
+.fade_text-slow.fade-in {
+  opacity: 1;
+}
+
+.fade_fv {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+.fade_fv.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade_sticker {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+.fade_sticker.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -72,8 +240,12 @@ body {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+html {
+  overflow-x: hidden !important;
+}
+
 body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 body p {
   line-height: 1.6 !important;
@@ -2206,3 +2378,5 @@ body.modal-open {
     margin-bottom: 6px;
   }
 }
+
+/*# sourceMappingURL=main_en.css.map */
