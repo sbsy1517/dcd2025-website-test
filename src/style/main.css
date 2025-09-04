@@ -3458,7 +3458,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-track {
   display: flex;
   transition: transform 0.3s ease;
-  touch-action: manipulation;
+  touch-action: none;
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-track .carousel-slide {
   min-width: 100%;
