@@ -302,9 +302,11 @@ $(function() {
 $(function() {
   var $imagePopup = $('.image-popup');
   
-  // 點擊 weartocare 卡片中的圖片
-  $('.weartocare .card img').on('click', function(e) {
+  // 點擊 weartocare 卡片中的圖片（包含輪播中的圖片）
+  $(document).on('click', '.weartocare .card img[data-large], .carousel-slide img[data-large]', function(e) {
     e.preventDefault();
+    e.stopPropagation(); // 防止事件冒泡到輪播滑動處理
+    
     var $img = $(this);
     var imgSrc = $img.attr('data-large') || $img.attr('src'); // 優先使用高畫質圖片
     var imgAlt = $img.attr('alt') || '圖片預覽';
@@ -556,7 +558,7 @@ $(function() {
   };
 });
 
-// --- 真正無限循環輪播功能 (支援觸控滑動) ---
+// --- 優化的無限循環輪播功能 (支援觸控滑動) ---
 $(function() {
   $('.carousel-container').each(function() {
     var $container = $(this);
@@ -568,9 +570,16 @@ $(function() {
     var isTransitioning = false;
     
     // 觸控滑動變數
-    var touchStartX = 0;
-    var touchEndX = 0;
-    var isDragging = false;
+    var touchData = {
+      startX: 0,
+      startY: 0,
+      currentX: 0,
+      currentY: 0,
+      isDragging: false,
+      isVerticalScroll: false,
+      startTime: 0,
+      moved: false
+    };
     var autoPlayInterval;
     
     // 如果只有一張圖片，不需要輪播功能
@@ -585,9 +594,6 @@ $(function() {
       // 複製第一張到最後面
       var $firstSlide = $originalSlides.first().clone();
       $track.append($firstSlide);
-      
-      // 重新獲取所有幻燈片（包含複製的）
-      var $allSlides = $track.find('.carousel-slide');
       
       // 設置初始位置（顯示真正的第一張）
       $track.css({
@@ -608,7 +614,7 @@ $(function() {
       } else {
         $track.css({
           'transform': 'translateX(' + translateX + '%)',
-          'transition': 'transform 0.3s ease'
+          'transition': 'transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)'
         });
       }
       
@@ -664,54 +670,76 @@ $(function() {
       updateCarousel();
     }
     
-    // 處理觸控滑動
-    function handleTouchMove(deltaX) {
+    // 觸控開始
+    function handleTouchStart(e) {
+      if (isTransitioning) return;
+      
+      var touch = e.type === 'touchstart' ? e.originalEvent.touches[0] : e;
+      touchData.startX = touch.clientX;
+      touchData.startY = touch.clientY;
+      touchData.currentX = touch.clientX;
+      touchData.currentY = touch.clientY;
+      touchData.isDragging = true;
+      touchData.isVerticalScroll = false;
+      touchData.startTime = Date.now();
+      touchData.moved = false;
+      
+      clearInterval(autoPlayInterval);
+      $track.css('transition', 'none');
+    }
+    
+    // 觸控移動
+    function handleTouchMove(e) {
+      if (!touchData.isDragging || isTransitioning) return;
+      
+      var touch = e.type === 'touchmove' ? e.originalEvent.touches[0] : e;
+      touchData.currentX = touch.clientX;
+      touchData.currentY = touch.clientY;
+      
+      var deltaX = touchData.currentX - touchData.startX;
+      var deltaY = touchData.currentY - touchData.startY;
+      
+      // 檢測是否為垂直滾動
+      if (!touchData.moved && Math.abs(deltaY) > Math.abs(deltaX)) {
+        touchData.isVerticalScroll = true;
+        return;
+      }
+      
+      // 如果是垂直滾動，不處理水平滑動
+      if (touchData.isVerticalScroll) return;
+      
+      touchData.moved = true;
+      e.preventDefault();
+      
+      // 計算滑動百分比
       var movePercent = (deltaX / $container.width()) * 100;
       var newTransform = (-currentSlide * 100) + movePercent;
       
-      $track.css({
-        'transform': 'translateX(' + newTransform + '%)',
-        'transition': 'none'
-      });
+      $track.css('transform', 'translateX(' + newTransform + '%)');
     }
     
-    // 觸控開始
-    $track.on('touchstart mousedown', function(e) {
-      if (isTransitioning) return;
-      
-      isDragging = true;
-      clearInterval(autoPlayInterval);
-      
-      var clientX = e.type === 'touchstart' ? e.originalEvent.touches[0].clientX : e.clientX;
-      touchStartX = clientX;
-      
-      $track.css('transition', 'none');
-      e.preventDefault();
-    });
-    
-    // 觸控移動
-    $track.on('touchmove mousemove', function(e) {
-      if (!isDragging || isTransitioning) return;
-      
-      var clientX = e.type === 'touchmove' ? e.originalEvent.touches[0].clientX : e.clientX;
-      var deltaX = clientX - touchStartX;
-      
-      handleTouchMove(deltaX);
-      e.preventDefault();
-    });
-    
     // 觸控結束
-    $track.on('touchend mouseup', function(e) {
-      if (!isDragging || isTransitioning) return;
+    function handleTouchEnd(e) {
+      if (!touchData.isDragging) return;
       
-      isDragging = false;
-      var clientX = e.type === 'touchend' ? e.originalEvent.changedTouches[0].clientX : e.clientX;
-      touchEndX = clientX;
+      touchData.isDragging = false;
       
-      var deltaX = touchEndX - touchStartX;
-      var threshold = $container.width() * 0.15; // 15% 寬度作為閾值
+      // 如果是垂直滾動，直接返回
+      if (touchData.isVerticalScroll) {
+        updateCarousel();
+        startAutoPlay();
+        return;
+      }
       
-      if (Math.abs(deltaX) > threshold) {
+      var deltaX = touchData.currentX - touchData.startX;
+      var deltaTime = Date.now() - touchData.startTime;
+      var velocity = Math.abs(deltaX) / deltaTime; // 像素/毫秒
+      
+      // 判斷是否需要切換幻燈片
+      var threshold = $container.width() * 0.15; // 15% 寬度閾值
+      var shouldSwipe = Math.abs(deltaX) > threshold || velocity > 0.3; // 距離閾值或速度閾值
+      
+      if (shouldSwipe && touchData.moved) {
         if (deltaX > 0) {
           // 向右滑動 - 前一張
           prevSlide();
@@ -726,11 +754,24 @@ $(function() {
       
       // 恢復自動播放
       startAutoPlay();
+    }
+    
+    // 綁定觸控事件
+    $track.on('touchstart mousedown', function(e) {
+      handleTouchStart(e);
     });
     
-    // 阻止拖拽時的點擊事件
+    $track.on('touchmove mousemove', function(e) {
+      handleTouchMove(e);
+    });
+    
+    $track.on('touchend mouseup touchcancel', function(e) {
+      handleTouchEnd(e);
+    });
+    
+    // 防止拖拽時的點擊事件（但允許輕觸圖片）
     $track.on('click', function(e) {
-      if (Math.abs(touchEndX - touchStartX) > 10) {
+      if (touchData.moved) {
         e.preventDefault();
         e.stopPropagation();
       }
@@ -757,7 +798,7 @@ $(function() {
     
     // 滑鼠離開時恢復自動播放
     $container.on('mouseleave', function() {
-      if (!isDragging) {
+      if (!touchData.isDragging) {
         startAutoPlay();
       }
     });
