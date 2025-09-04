@@ -969,6 +969,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   bottom: -78px;
   pointer-events: none;
   width: 220px;
+  z-index: 2;
 }
 @media (max-width: 1024px) {
   .home_page .content .sticker {
@@ -986,9 +987,9 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 576px) {
   .home_page .content .sticker {
-    width: 100px;
-    bottom: -30px;
-    right: -50px;
+    width: 80px;
+    bottom: -20px;
+    right: -20px;
   }
 }
 .home_page .bg_line {
@@ -3453,18 +3454,30 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   position: relative;
   width: 100%;
   overflow: hidden;
+  touch-action: pan-y pinch-zoom;
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-track {
   display: flex;
   transition: transform 0.3s ease;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-track:active {
+  cursor: grabbing;
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-track .carousel-slide {
   min-width: 100%;
+  flex-shrink: 0;
+  pointer-events: none;
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-track .carousel-slide img {
   width: 100%;
   height: auto;
   display: block;
+  pointer-events: none;
+  user-select: none;
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-dots {
   position: absolute;

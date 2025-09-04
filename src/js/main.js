@@ -528,7 +528,7 @@ $(function() {
   };
 });
 
-// --- 輪播功能 ---
+// --- 輪播功能 (支援觸控滑動) ---
 $(function() {
   $('.carousel-container').each(function() {
     var $container = $(this);
@@ -538,13 +538,31 @@ $(function() {
     var currentSlide = 0;
     var slideCount = $slides.length;
     
+    // 觸控滑動變數
+    var touchStartX = 0;
+    var touchEndX = 0;
+    var isDragging = false;
+    var startTransform = 0;
+    var currentTransform = 0;
+    var autoPlayInterval;
+    
     // 如果只有一張圖片，不需要輪播功能
     if (slideCount <= 1) return;
     
     // 更新輪播位置
-    function updateCarousel() {
+    function updateCarousel(instant) {
       var translateX = -currentSlide * 100;
-      $track.css('transform', 'translateX(' + translateX + '%)');
+      if (instant) {
+        $track.css({
+          'transform': 'translateX(' + translateX + '%)',
+          'transition': 'none'
+        });
+      } else {
+        $track.css({
+          'transform': 'translateX(' + translateX + '%)',
+          'transition': 'transform 0.3s ease'
+        });
+      }
       
       // 更新圓點狀態
       $dots.removeClass('active');
@@ -569,14 +587,90 @@ $(function() {
       updateCarousel();
     }
     
+    // 處理觸控滑動
+    function handleTouchMove(deltaX) {
+      var movePercent = (deltaX / $container.width()) * 100;
+      var newTransform = startTransform + movePercent;
+      
+      $track.css({
+        'transform': 'translateX(' + newTransform + '%)',
+        'transition': 'none'
+      });
+    }
+    
+    // 觸控開始
+    $track.on('touchstart mousedown', function(e) {
+      isDragging = true;
+      clearInterval(autoPlayInterval);
+      
+      var clientX = e.type === 'touchstart' ? e.originalEvent.touches[0].clientX : e.clientX;
+      touchStartX = clientX;
+      startTransform = -currentSlide * 100;
+      
+      $track.css('transition', 'none');
+      e.preventDefault();
+    });
+    
+    // 觸控移動
+    $track.on('touchmove mousemove', function(e) {
+      if (!isDragging) return;
+      
+      var clientX = e.type === 'touchmove' ? e.originalEvent.touches[0].clientX : e.clientX;
+      var deltaX = clientX - touchStartX;
+      
+      handleTouchMove(deltaX);
+      e.preventDefault();
+    });
+    
+    // 觸控結束
+    $track.on('touchend mouseup', function(e) {
+      if (!isDragging) return;
+      
+      isDragging = false;
+      var clientX = e.type === 'touchend' ? e.originalEvent.changedTouches[0].clientX : e.clientX;
+      touchEndX = clientX;
+      
+      var deltaX = touchEndX - touchStartX;
+      var threshold = $container.width() * 0.2; // 20% 寬度作為閾值
+      
+      if (Math.abs(deltaX) > threshold) {
+        if (deltaX > 0) {
+          // 向右滑動 - 前一張
+          prevSlide();
+        } else {
+          // 向左滑動 - 下一張
+          nextSlide();
+        }
+      } else {
+        // 滑動距離不足，回到原位
+        updateCarousel();
+      }
+      
+      // 恢復自動播放
+      startAutoPlay();
+    });
+    
+    // 阻止拖拽時的點擊事件
+    $track.on('click', function(e) {
+      if (Math.abs(touchEndX - touchStartX) > 10) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+    
+    // 開始自動播放
+    function startAutoPlay() {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(nextSlide, 3000);
+    }
+    
     // 圓點點擊事件
     $dots.on('click', function() {
       var index = $(this).data('slide');
       goToSlide(index);
+      clearInterval(autoPlayInterval);
+      startAutoPlay();
     });
-    
-    // 自動播放
-    var autoPlayInterval = setInterval(nextSlide, 3000); // 3秒切換一次
     
     // 滑鼠懸停時暫停自動播放
     $container.on('mouseenter', function() {
@@ -585,11 +679,14 @@ $(function() {
     
     // 滑鼠離開時恢復自動播放
     $container.on('mouseleave', function() {
-      autoPlayInterval = setInterval(nextSlide, 3000);
+      if (!isDragging) {
+        startAutoPlay();
+      }
     });
     
     // 初始化
     updateCarousel();
+    startAutoPlay();
   });
 });
 
