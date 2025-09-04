@@ -3967,7 +3967,7 @@ footer
         background-position: top center
         background-repeat: repeat-x
         background-color: #fff
-        background-size: 650px
+        background-size: 651px // 增加 1px 以消除接縫
 
         position: relative
 
@@ -3977,22 +3977,22 @@ footer
         
         +container-768px
             height: 600px
-            background-size: 500px
+            background-size: 501px // 增加 1px 以消除接縫
             padding: 24px 0 0
         
         +container-576px
             height: 550px
-            background-size: 400px
+            background-size: 401px // 增加 1px 以消除接縫
             padding: 20px 0 0
         
         +container-414px
             height: 500px
-            background-size: 350px
+            background-size: 351px // 增加 1px 以消除接縫
             padding: 16px 0 0
         
         +container-360px
             height: 480px
-            background-size: 320px
+            background-size: 321px // 增加 1px 以消除接縫
             padding: 12px 0 0
         .bg_color
             position: absolute
@@ -4747,6 +4747,9 @@ body.modal-open
     align-items: center
     overflow-y: auto
 
+    +container-768px
+        padding: 16px
+
     @supports (height: 100dvh)
         height: 100dvh
 
@@ -4772,7 +4775,9 @@ body.modal-open
             position: absolute
             top: 20px
             right: 20px
-            font-size: 24px
+            font-size: 30px
+            padding: 10px
+
             color: $grey
             cursor: pointer
             transition: color 0.2s
@@ -4789,8 +4794,8 @@ body.modal-open
             padding: 20px
             // max-width: 320px
             width: 98vw
-            // top: 10px
-            // right: 10px
+            top: 0px
+            right: 0px
 
         .content
             .title
@@ -4807,8 +4812,12 @@ body.modal-open
             h2
                 color: $blue
                 font-size: 18px
-                padding: 16px 0
+                padding-top: 48px
                 line-height: 30px
+                +container-576px
+                    font-size: 16px
+                    line-height: 28px
+                
                 
             .terms-content
                 font-size: 14px

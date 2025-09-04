@@ -4991,7 +4991,7 @@ footer .bg {
   background-position: top center;
   background-repeat: repeat-x;
   background-color: #fff;
-  background-size: 650px;
+  background-size: 651px;
   position: relative;
 }
 @media (max-width: 1200px) {
@@ -5003,28 +5003,28 @@ footer .bg {
 @media (max-width: 768px) {
   footer .bg {
     height: 600px;
-    background-size: 500px;
+    background-size: 501px;
     padding: 24px 0 0;
   }
 }
 @media (max-width: 576px) {
   footer .bg {
     height: 550px;
-    background-size: 400px;
+    background-size: 401px;
     padding: 20px 0 0;
   }
 }
 @media (max-width: 414px) {
   footer .bg {
     height: 500px;
-    background-size: 350px;
+    background-size: 351px;
     padding: 16px 0 0;
   }
 }
 @media (max-width: 360px) {
   footer .bg {
     height: 480px;
-    background-size: 320px;
+    background-size: 321px;
     padding: 12px 0 0;
   }
 }
@@ -5925,6 +5925,11 @@ body.modal-open .marquee {
   align-items: center;
   overflow-y: auto;
 }
+@media (max-width: 768px) {
+  .terms-popup {
+    padding: 16px;
+  }
+}
 @supports (height: 100dvh) {
   .terms-popup {
     height: 100dvh;
@@ -5952,7 +5957,8 @@ body.modal-open .marquee {
   position: absolute;
   top: 20px;
   right: 20px;
-  font-size: 24px;
+  font-size: 30px;
+  padding: 10px;
   color: #949494;
   cursor: pointer;
   transition: color 0.2s;
@@ -5973,6 +5979,8 @@ body.modal-open .marquee {
     border-radius: 14px;
     padding: 20px;
     width: 98vw;
+    top: 0px;
+    right: 0px;
   }
 }
 .terms-popup .container .content .title {
@@ -5993,8 +6001,14 @@ body.modal-open .marquee {
 .terms-popup .container .content h2 {
   color: #318CDD;
   font-size: 18px;
-  padding: 16px 0;
+  padding-top: 48px;
   line-height: 30px;
+}
+@media (max-width: 576px) {
+  .terms-popup .container .content h2 {
+    font-size: 16px;
+    line-height: 28px;
+  }
 }
 .terms-popup .container .content .terms-content {
   font-size: 14px;
