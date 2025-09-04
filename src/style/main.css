@@ -5956,7 +5956,7 @@ body.modal-open .marquee {
   color: #949494;
   cursor: pointer;
   transition: color 0.2s;
-  z-index: 1001;
+  z-index: 1002;
 }
 .terms-popup .container .close-btn:hover {
   color: #FF76B6;
@@ -5971,9 +5971,8 @@ body.modal-open .marquee {
 @media (max-width: 640px) {
   .terms-popup .container {
     border-radius: 14px;
-    padding: 22px;
-    max-width: 320px;
-    width: 92vw;
+    padding: 20px;
+    width: 98vw;
   }
 }
 .terms-popup .container .content .title {
@@ -5993,6 +5992,7 @@ body.modal-open .marquee {
   color: #318CDD;
   font-size: 18px;
   padding: 16px 0;
+  line-height: 30px;
 }
 .terms-popup .container .content .terms-content {
   font-size: 14px;
