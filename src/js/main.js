@@ -682,8 +682,8 @@ $(function() {
     // 觸控開始
     function handleTouchStart(e) {
       if (isTransitioning) return;
-      
-      var touch = e.type === 'touchstart' ? e.originalEvent.touches[0] : e;
+
+      var touch = e.touches ? e.touches[0] : e;
       touchData.startX = touch.clientX;
       touchData.startY = touch.clientY;
       touchData.currentX = touch.clientX;
@@ -692,16 +692,16 @@ $(function() {
       touchData.isVerticalScroll = false;
       touchData.startTime = Date.now();
       touchData.moved = false;
-      
+
       clearInterval(autoPlayInterval);
       $track.css('transition', 'none');
     }
-    
+
     // 觸控移動
     function handleTouchMove(e) {
       if (!touchData.isDragging || isTransitioning) return;
-      
-      var touch = e.type === 'touchmove' ? e.originalEvent.touches[0] : e;
+
+      var touch = e.touches ? e.touches[0] : e;
       touchData.currentX = touch.clientX;
       touchData.currentY = touch.clientY;
       
@@ -775,18 +775,12 @@ $(function() {
       startAutoPlay();
     }
     
-    // 綁定觸控事件
-    $track.on('touchstart', function(e) {
-      handleTouchStart(e);
-    });
-    
-    $track.on('touchmove', function(e) {
-      handleTouchMove(e);
-    });
-    
-    $track.on('touchend touchcancel', function(e) {
-      handleTouchEnd(e);
-    });
+    // 綁定觸控事件 (使用非被動監聽避免預設行為)
+    var trackEl = $track[0];
+    trackEl.addEventListener('touchstart', handleTouchStart, { passive: false });
+    trackEl.addEventListener('touchmove', handleTouchMove, { passive: false });
+    trackEl.addEventListener('touchend', handleTouchEnd, { passive: false });
+    trackEl.addEventListener('touchcancel', handleTouchEnd, { passive: false });
     
     // 滑鼠事件 (只在桌面環境)
     if (!('ontouchstart' in window)) {

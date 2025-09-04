@@ -774,7 +774,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 1024px) {
   .home_page .content .menu .language .menu_btn::before, .home_page .content .menu .language .menu_btn::after,
-.home_page .content .menu .language .menu_btn span {
+  .home_page .content .menu .language .menu_btn span {
     content: "";
     display: block;
     width: 24px;
@@ -797,13 +797,13 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
     bottom: 20px;
   }
   .home_page .content .menu .language .menu_btn:hover::before, .home_page .content .menu .language .menu_btn:hover::after,
-.home_page .content .menu .language .menu_btn:hover span {
+  .home_page .content .menu .language .menu_btn:hover span {
     background-color: #FFBBDA;
   }
 }
 @media (max-width: 768px) {
   .home_page .content .menu .language .menu_btn::before, .home_page .content .menu .language .menu_btn::after,
-.home_page .content .menu .language .menu_btn span {
+  .home_page .content .menu .language .menu_btn span {
     width: 20px;
     height: 2px;
   }
@@ -816,7 +816,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 576px) {
   .home_page .content .menu .language .menu_btn::before, .home_page .content .menu .language .menu_btn::after,
-.home_page .content .menu .language .menu_btn span {
+  .home_page .content .menu .language .menu_btn span {
     width: 16px;
     height: 2px;
   }
@@ -3465,7 +3465,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-track {
   display: flex;
   transition: transform 0.3s ease;
-  touch-action: none;
+  touch-action: pan-y;
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-track .carousel-slide {
   min-width: 100%;
@@ -6074,3 +6074,5 @@ body.modal-open .marquee {
     margin-bottom: 6px;
   }
 }
+
+/*# sourceMappingURL=main.css.map */
