@@ -2816,30 +2816,19 @@ header
                                 position: relative
                                 width: 100%
                                 overflow: hidden
-                                touch-action: pan-y pinch-zoom  // 允許垂直滾動但禁止水平滾動
                                 
                                 .carousel-track
                                     display: flex
                                     transition: transform 0.3s ease
-                                    cursor: grab
-                                    touch-action: none  // 禁用瀏覽器預設觸控行為
-                                    user-select: none   // 禁用文字選取
-                                    -webkit-user-drag: none  // 禁用拖拽
-                                    
-                                    &:active
-                                        cursor: grabbing
+                                    touch-action: pan-y  // 只禁止水平滾動，允許垂直滾動
                                     
                                     .carousel-slide
                                         min-width: 100%
-                                        flex-shrink: 0  // 防止收縮
-                                        pointer-events: none  // 防止圖片拖拽
                                         
                                         img
                                             width: 100%
                                             height: auto
                                             display: block
-                                            pointer-events: none  // 防止圖片拖拽
-                                            user-select: none     // 禁用選取
                                 
                                 .carousel-dots
                                     position: absolute
