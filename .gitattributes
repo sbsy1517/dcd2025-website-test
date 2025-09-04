@@ -1,0 +1,17 @@
+# Git LFS 追蹤設定
+# 大型字體檔案
+*.otf filter=lfs diff=lfs merge=lfs -text
+*.woff2 filter=lfs diff=lfs merge=lfs -text
+*.woff filter=lfs diff=lfs merge=lfs -text
+
+# 大型圖片檔案 (可選)
+# *.png filter=lfs diff=lfs merge=lfs -text
+# *.jpg filter=lfs diff=lfs merge=lfs -text
+# *.jpeg filter=lfs diff=lfs merge=lfs -text
+
+# 影片檔案
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mov filter=lfs diff=lfs merge=lfs -text
+
+# PDF 檔案
+*.pdf filter=lfs diff=lfs merge=lfs -text

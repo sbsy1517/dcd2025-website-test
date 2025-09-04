@@ -1,0 +1,257 @@
+/* ========================================
+   設計系統變數 - DCD 2025
+   ======================================== */
+
+// ========== 品牌色彩 ==========
+$pink: #FF76B6
+$blue: #318CDD
+$yellow: #FDE021
+$mint: #41CC94
+$orange: #FF8A00
+
+// ========== 輔助色彩 ==========
+$light_pink: #FFBBDA
+$light_blue: #4EB7DD
+$light_mint: #8DF0C8
+$light_orange: #FFBE70
+$hover_blue: #80bcf1
+
+// ========== 中性色彩 ==========
+$white: #FFFFFF
+$grey: #949494
+$text_brown: #754725
+
+// ========== 背景色彩 ==========
+$bg_yellow: #FFF5D7
+$bg-light-blue: #4EB7DD
+$footer-green: #69CA98
+
+// ========== 間距系統 ==========
+$spacing-xs: 8px
+$spacing-sm: 16px
+$spacing-md: 24px
+$spacing-lg: 32px
+$spacing-xl: 48px
+$spacing-xxl: 64px
+$spacing-xxxl: 96px
+
+// ========== 字體系統 ==========
+$font-size-sm: 20px
+$font-size-md: 22px
+$font-size-lg: 24px
+$font-size-xl: 32px
+
+$line-height-sm: 1.4
+$line-height-md: 1.6
+$line-height-lg: 1.8
+
+// ========== 邊框系統 ==========
+$border-width: 4px
+$border-radius-sm: 16px
+$border-radius-md: 20px
+$border-radius-lg: 30px
+$border-radius-pill: 999px
+
+// ========== 陰影系統 ==========
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1)
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15)
+$shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.25)
+
+// ========== 動畫系統 ==========
+$transition-fast: 0.15s ease
+$transition-normal: 0.2s ease
+$transition-slow: 0.3s ease
+
+// ========== 版面系統 ==========
+$container-width: 1100px
+$container-padding: $spacing-md
+
+// ========== Z-index 系統 ==========
+$z-header: 100
+$z-modal: 1000
+$z-tooltip: 1001
+
+
+// mixin
+// @mixin container-1200px()
+//    @media (min-width: 1200px)
+//       max-width: 1200px
+//       padding-left: $container-padding
+//       padding-right: $container-padding
+
+@mixin container-1200px()
+   @media (max-width: 1200px)
+      @content
+
+@mixin container-1024px()
+   @media (max-width: 1024px)
+      @content
+
+@mixin container-768px()
+   @media (max-width: 768px)
+      @content
+
+@mixin container-600px()
+   @media (max-width: 613px)
+      @content
+
+@mixin container-576px()
+   @media (max-width: 576px)
+      @content
+
+@mixin container-500px()
+   @media (max-width: 500px)
+      @content
+
+@mixin container-414px()
+   @media (max-width: 414px)
+      @content
+
+@mixin container-360px()
+   @media (max-width: 360px)
+      @content
+
+
+// components
+@mixin pad
+   display: none
+   +container-1024px
+      display: flex
+   +container-768px
+      display: none
+@mixin mobile
+   display: none
+   // +container-1024px
+   //    display: flex
+   +container-768px
+      display: flex
+@mixin laptop
+   display: flex
+   +container-1024px
+      display: none
+
+@mixin marquee()
+   .marquee
+      height: 60px
+      background: $pink
+      overflow: hidden
+      display: flex          // 讓內層內容可垂直置中
+      align-items: center
+      border-bottom: 3px solid $yellow
+      position: fixed        // 固定在頂部
+      top: 0
+      left: 0
+      width: 100%
+      z-index: 15           // 確保在其他元素上方，但低於 menu_fix 的 z-index: 14，這樣彈窗時可以隱藏
+      .track
+         display: flex
+         flex: 0 0 auto
+         will-change: transform
+         transform: translate3d(0, 0, 0)
+         
+         img
+            height: 36px
+            width: auto
+            flex: 0 0 auto // 不要被壓縮
+            padding-right: 20px
+            animation: marquee 20s linear infinite
+      +container-1024px
+         height: 50px
+         .track
+            img
+               height: 30px
+      +container-576px
+         height: 40px
+         .track
+            img
+               height: 25px
+   @keyframes marquee
+      0%
+         transform: translateX(0)
+      100%
+         transform: translateX(-100%)
+
+// ========== 滾動動畫特效 ==========
+// 往上浮出特效
+.fade
+   opacity: 0
+   transform: translateY(30px)
+   transition: all 0.6s ease-out
+   
+   &.fade-in
+      opacity: 1
+      transform: translateY(0)
+
+// 關鍵幀動畫
+@keyframes fadeInUp
+   from
+      opacity: 0
+      transform: translateY(30px)
+   to
+      opacity: 1
+      transform: translateY(0)
+
+// 更快速的浮出效果（可選）
+.fade-fast
+   opacity: 0
+   transform: translateY(20px)
+   transition: all 0.4s ease-out
+   
+   &.fade-in
+      opacity: 1
+      transform: translateY(0)
+
+// 更慢速的浮出效果（可選）
+.fade-slow
+   opacity: 0
+   transform: translateY(40px)
+   transition: all 0.8s ease-out
+   
+   &.fade-in
+      opacity: 1
+      transform: translateY(0)
+
+// 文字淡入效果（不浮出，只有透明度變化）
+.fade_text
+   opacity: 0
+   transition: opacity 0.8s ease-out
+   
+   &.fade-in
+      opacity: 1
+
+// 快速文字淡入
+.fade_text-fast
+   opacity: 0
+   transition: opacity 0.5s ease-out
+   
+   &.fade-in
+      opacity: 1
+
+// 慢速文字淡入
+.fade_text-slow
+   opacity: 0
+   transition: opacity 1.2s ease-out
+   
+   &.fade-in
+      opacity: 1
+
+// Loading 結束後延遲浮出效果（用於首屏內容）
+.fade_fv
+   opacity: 0
+   transform: translateY(30px)
+   transition: all 0.6s ease-out
+   
+   &.fade-in
+      opacity: 1
+      transform: translateY(0)
+
+// Loading 結束後延遲浮出效果（用於貼紙等裝飾元素）
+.fade_sticker
+   opacity: 0
+   transform: translateY(30px)
+   transition: all 0.6s ease-out
+   
+   &.fade-in
+      opacity: 1
+      transform: translateY(0)
+

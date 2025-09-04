@@ -1,0 +1,24 @@
+$font-path: "../font"  // 發佈後字型所在網址路徑
+
+// 建一個 mixin 簡化宣告
+=font-face($family, $file, $weight)
+  @font-face
+    font-family: $family
+    src: url("#{$file}.otf") format("opentype")
+    font-weight: $weight
+    font-style: normal
+    font-display: swap
+
+// GenSenRounded2TW 權重：EL=200, L=300, R=400, M=500, B=700, H=900
++font-face("GenSenRounded2TW", "#{$font-path}/GenSenRounded2TW-EL", 200)
++font-face("GenSenRounded2TW", "#{$font-path}/GenSenRounded2TW-L", 300)
++font-face("GenSenRounded2TW", "#{$font-path}/GenSenRounded2TW-R", 400)
++font-face("GenSenRounded2TW", "#{$font-path}/GenSenRounded2TW-M", 500)
++font-face("GenSenRounded2TW", "#{$font-path}/GenSenRounded2TW-B", 700)
++font-face("GenSenRounded2TW", "#{$font-path}/GenSenRounded2TW-H", 900)
+
+:root
+  --font-fallback: "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif
+
+body
+  font-family: "GenSenRounded2TW", var(--font-fallback)

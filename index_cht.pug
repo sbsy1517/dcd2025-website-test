@@ -1,0 +1,822 @@
+doctype html
+html(lang="zh-Hant")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="keyword" content="公益金便服日")
+    meta(name="author" content="香港公益金")
+    meta(name="description" content="「公益金便服日」自1993年首次舉辦以來，現已成為公益金其中一個廣受社會各界人士歡迎的籌款活動。參加者只需捐款港幣 70 元或以上（學生不設最低捐款額），便可於便服日活動當天穿上喜愛的便服上班或上學，共襄善舉。")
+    meta(name="copyright" content="© 香港公益金 2025 - 版權所有，不得轉載。")
+
+    // Animate.css（v4）
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css")
+
+    // 預載入關鍵字體
+    link(rel="preload", href="./src/font/GenSenRounded2TW-M.otf", as="font", type="font/otf", crossorigin)
+    link(rel="preload", href="./src/font/GenSenRounded2TW-B.otf", as="font", type="font/otf", crossorigin)
+    
+    // 預載入首屏重要圖片
+    link(rel="preload", href="./src/images/home_page/fv.png", as="image")
+    link(rel="preload", href="./src/images/home_page/logo.svg", as="image")
+    link(rel="preload", href="./src/images/header/header.svg", as="image")
+    
+    // 預連接外部資源
+    link(rel="preconnect", href="https://cdnjs.cloudflare.com")
+    link(rel="preconnect", href="https://code.jquery.com")
+    
+    // 你的主樣式
+    link(rel="stylesheet" href="/src/style/main.css")
+    link(rel="icon", type="image/x-icon", href="./src/images/favicon/favicon.png")
+    link(rel="apple-touch-icon", sizes="180x180", href="./src/images/favicon/apple-touch-icon.png")
+    link(rel="preload", href="./src/style/reset.css", as="style")
+    link(rel="stylesheet", href="./src/style/reset.css")
+    link(rel="preload", href="./src/style/main.css", as="style")
+    link(rel="stylesheet", href="./src/style/main.css")
+
+    title 公益金便服日2025 | WEAR TO CARE
+  body
+    // Loading 頁面
+    .loading-screen
+      .loading-container
+        .loading-logo
+          img(src="./src/images/home_page/logo.svg", alt="香港公益金")
+    header
+      .marquee
+        .track 
+          img(src="./src/images/header/header.svg", alt="")
+          img(src="./src/images/header/header.svg", alt="")
+      .menu_fix 
+        .logo 
+          img(src="./src/images/home_page/logo.svg", alt="香港公益金") 
+        .wrap 
+          a.school.laptop(href="https://app.commchest.org/event/dcd2025/enrolment.aspx" target="_blank") 機構/學校報名
+          a.personal.laptop(href="https://www.commchest.org/tc/event/dcd2025/enrolment/form/individual" target="_blank") 個人報名
+          a.download.laptop(href="#download") 下載區
+          .language
+            a(href="index_en.html") EN
+          .menu_btn.mobile
+            span
+      
+      // 手機版側邊選單
+      .mobile-menu-overlay
+      .mobile-menu
+        .mobile-menu-header
+          .close-btn ×
+        .mobile-menu-content
+          a.mobile-menu-item(href="https://app.commchest.org/event/dcd2025/enrolment.aspx" target="_blank") 機構/學校報名
+          a.mobile-menu-item(href="https://www.commchest.org/tc/event/dcd2025/enrolment/form/individual" target="_blank") 個人報名
+          a.mobile-menu-item(href="#download") 下載區
+    section.home_page
+      
+
+      .bg_line
+        .line#yellow
+        .line#pink
+        .line#blue
+      .content
+        .menu
+          .logo
+            img(src="./src/images/home_page/logo.svg", alt="香港公益金")
+          .menu_2
+            a.school(href="https://app.commchest.org/event/dcd2025/enrolment.aspx" target="_blank") 機構/學校報名
+            a.personal(href="https://www.commchest.org/tc/event/dcd2025/enrolment/form/individual" target="_blank") 個人報名
+            a.download(href="#download") 下載區
+          .language
+            a(href="index_en.html") EN
+            .menu_btn
+              span
+        .fv
+          img(src="./src/images/home_page/fv.png", alt="")
+          .title.fade_fv
+            img.en(src="./src/images/home_page/title_en.svg", alt="Dress Casual Day")
+            img.cht(src="./src/images/home_page/title_cht.svg", alt="公益金便服日 2025.10.28 星期二 TUE")
+          .copywrite
+            img(src="./src/images/home_page/copywrite.svg", alt="")
+        .sticker.fade_sticker
+          img(src="./src/images/home_page/sticker.png", alt="")
+
+    section.intro
+      .title.fade
+        .bg_cloud
+        .title_content
+          img(src="./src/images/intro/title.png", loading="lazy", alt="")
+          img(src="./src/images/intro/1.png", loading="lazy", alt="")
+          .bubble
+            img#bubble_1(src="./src/images/intro/bubble_1.svg", loading="lazy", alt="")
+            img#bubble_2(src="./src/images/intro/bubble_2.svg", loading="lazy", alt="")
+      .content 
+        p.fade_text
+          | 「公益金便服日」自1993年首次舉辦以來，現已成為公益金其中一個廣受社會各界人士歡迎的籌款活動。參加者只需捐款港幣 70 元或以上(學生不設最低捐款額)，
+          br
+          | 便可於便服日活動當天穿上喜愛的便服上班或上學，共襄善舉。
+        p.fade_text
+          |活動已定於
+          span.mint 2025年10月28日(星期二)
+          |舉行，為使參加者更投入這項有意義的活動，
+          br
+          | 每年便服日都設有不同類型的主題或活動，今年繼續以「
+          span.mint WEAR TO CARE
+          |」作主題，
+          br
+          |鼓勵香港人穿上喜愛的便服行善，把愛心傳遞，關懷及鼓勵身邊的人，
+          br
+          |「
+          span.mint WEAR TO CARE
+          |」!
+        .bubble
+          img.fade#bubble_three(src="./src/images/intro/bubble_1.svg", loading="lazy", alt="")
+          img.fade#bubble_four(src="./src/images/intro/bubble_3.png", loading="lazy", alt="")
+          img.fade#bubble_five(src="./src/images/intro/bubble_1.svg", loading="lazy", alt="")
+          img.fade#bubble_six(src="./src/images/intro/bubble_4.png", loading="lazy", alt="")
+    section.video 
+      .frame.fade_text
+        img#youtube(src="./src/images/video/video.png", loading="lazy", alt="")
+        img#playbtn(src="./src/images/video/play.svg", loading="lazy", alt="", style="cursor:pointer;")
+      //- YouTube Popup
+      .video-popup
+        .container
+          span.close-btn(aria-label="關閉") ×
+          iframe(width="850", height="500", src="https://www.youtube.com/embed/ufFsFBqIqe4?si=SnL66addkUJKoK5G", frameborder="0", allow="autoplay; encrypted-media", allowfullscreen)
+      img#video_bg(src="./src/images/video/video_bg.png", loading="lazy", alt="")
+    section.story
+      .title.fade
+        img#one(src="./src/images/story/1.png", loading="lazy", alt="")
+        img#two(src="./src/images/story/wear_to_care.png", loading="lazy", alt="")
+        img#three(src="./src/images/story/2.png", loading="lazy", alt="")
+      img(src="./src/images/story/light.png", loading="lazy", alt="")
+      .content.fade
+        img(src="./src/images/story/story_title.png", loading="lazy", alt="")
+        p.fade_text 香港公益金每年透過舉辦各式各樣的籌款活動，將巿民踴躍捐輸的善款，不扣除任何行政開支，全數撥捐逾160間社會福利會員機構，支援六大範疇的社福服務，包括兒童及青年服務、安老服務、家庭及兒童福利服務、醫療及保健服務、復康及善導服務以及社區發展，每年受惠人次超過350萬。公益金的行政費用來自慈善夥伴 ─ 香港賽馬會的贊助，以及於各項基金的穩健投資收益，這獨特的運作模式亦令香港公益金成功履行捐款者信托人的使命。
+      .bg
+      .board
+        .wrap.laptop 
+          .img#one
+            img(src="./src/images/story/story_1.png", loading="lazy", alt="")
+            .pic
+              .content 為兒童及青年提供適切照顧和支援服務，並透過多元化發展計劃和培訓課程，幫助他們健康成長，培訓各方面才能。
+              .btn 
+                a(href="./src/pdf/1_children/Brief_Children and Youth Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/1_children/MA list_Children and Youth Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          
+          .img#four
+            img(src="./src/images/story/story_4.png", loading="lazy", alt="")
+            .pic
+              .content 為病人及其家人應付或解決因疾病引致的生活問題，從而改善他們的生活質素；並提倡社區健康生活及預防疾病教育，達至身心全面發展。
+              .btn 
+                a(href="./src/pdf/4_medical/Brief_Medical & Health Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/4_medical/MA_list_Medical & Health Services_2526.pdf" target="_blank")
+                  p 受惠機構
+        .wrap#middle.laptop
+          .img#two
+            img(src="./src/images/story/story_2.png", loading="lazy", alt="")
+            .pic
+              .content 鼓勵並協助市民照顧年長家庭成員，並提供多元化服務，協助長者安享晚年，讓他們能繼續參與社區活動，發揮所長。
+              .btn 
+                a(href="./src/pdf/2_elderly/Brief_Elderly Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/2_elderly/MA list_Elderly Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#five
+            img(src="./src/images/story/story_5.png", loading="lazy", alt="")
+            .pic
+              .content 協助殘疾人士及長期病患者發展潛能及適應社群生活的能力，以及協助戒毒康復者及更生人士重建生命，鼓勵並幫助他們融入社會。
+              .btn 
+                a(href="./src/pdf/5_Aftercare/Brief_Rehabilitation and Aftercare Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/5_Aftercare/MA_list_Rehabilitation and Aftercare Services_2526.pdf" target="_blank")
+                  p 受惠機構
+        .wrap.laptop
+          .img#three
+            img(src="./src/images/story/story_3.png", loading="lazy", alt="")
+            .pic
+              .content 維繫及鞏固家庭個體，協助家庭成員建立互愛互勉的緊密關係，預防及處理個人或家庭問題，並針對家庭無法解決的需要，提供輔助服務。
+              .btn 
+                a(href="./src/pdf/3_Family/Brief_Family and Child Welfare Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/3_Family/MA list_Family and Child Welfare Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#six
+            img(src="./src/images/story/story_6.png", loading="lazy", alt="")
+            .pic
+              .content 促進社群關係，在社區內建立團結精神，並鼓勵個人參與解決社區問題，以改善社區生活質素。
+              .btn 
+                a(href="./src/pdf/6_other/Brief_Community Development and Other Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/6_other/MA list_Community Development and Other Services_2526.pdf" target="_blank")
+                  p 受惠機構
+
+        .wrap.pad
+          .img#one
+            img(src="./src/images/story/story_1.png", loading="lazy", alt="")
+            .pic
+              .content 為兒童及青年提供適切照顧和支援服務，並透過多元化發展計劃和培訓課程，幫助他們健康成長，培訓各方面才能。
+              .btn 
+                a(href="./src/pdf/1_children/Brief_Children and Youth Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/1_children/MA list_Children and Youth Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#three
+            img(src="./src/images/story/story_3.png", loading="lazy", alt="")
+            .pic
+              .content 維繫及鞏固家庭個體，協助家庭成員建立互愛互勉的緊密關係，預防及處理個人或家庭問題，並針對家庭無法解決的需要，提供輔助服務。
+              .btn 
+                a(href="./src/pdf/3_Family/Brief_Family and Child Welfare Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/3_Family/MA list_Family and Child Welfare Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#five
+            img(src="./src/images/story/story_5.png", loading="lazy", alt="")
+            .pic
+              .content 協助殘疾人士及長期病患者發展潛能及適應社群生活的能力，以及協助戒毒康復者及更生人士重建生命，鼓勵並幫助他們融入社會。
+              .btn 
+                a(href="./src/pdf/5_Aftercare/Brief_Rehabilitation and Aftercare Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/5_Aftercare/MA_list_Rehabilitation and Aftercare Services_2526.pdf" target="_blank")
+                  p 受惠機構
+        .wrap#middle.pad
+          .img#two
+            img(src="./src/images/story/story_2.png", loading="lazy", alt="")
+            .pic
+              .content 鼓勵並協助市民照顧年長家庭成員，並提供多元化服務，協助長者安享晚年，讓他們能繼續參與社區活動，發揮所長。
+              .btn 
+                a(href="./src/pdf/2_elderly/Brief_Elderly Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/2_elderly/MA list_Elderly Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#four
+            img(src="./src/images/story/story_4.png", loading="lazy", alt="")
+            .pic
+              .content 為病人及其家人應付或解決因疾病引致的生活問題，從而改善他們的生活質素；並提倡社區健康生活及預防疾病教育，達至身心全面發展。
+              .btn 
+                a(href="./src/pdf/4_medical/Brief_Medical & Health Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/4_medical/MA_list_Medical & Health Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#six
+            img(src="./src/images/story/story_6.png", loading="lazy", alt="")
+            .pic
+              .content 促進社群關係，在社區內建立團結精神，並鼓勵個人參與解決社區問題，以改善社區生活質素。
+              .btn 
+                a(href="./src/pdf/6_other/Brief_Community Development and Other Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/6_other/MA list_Community Development and Other Services_2526.pdf" target="_blank")
+                  p 受惠機構
+        .wrap.mobile
+          .img#one
+            img(src="./src/images/story/story_1.png", loading="lazy", alt="")
+            .pic
+              .content 為兒童及青年提供適切照顧和支援服務，並透過多元化發展計劃和培訓課程，幫助他們健康成長，培訓各方面才能。
+              .btn 
+                a(href="./src/pdf/1_children/Brief_Children and Youth Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/1_children/MA list_Children and Youth Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#two
+            img(src="./src/images/story/story_2.png", loading="lazy", alt="")
+            .pic
+              .content 鼓勵並協助市民照顧年長家庭成員，並提供多元化服務，協助長者安享晚年，讓他們能繼續參與社區活動，發揮所長。
+              .btn 
+                a(href="./src/pdf/2_elderly/Brief_Elderly Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/2_elderly/MA list_Elderly Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#three
+            img(src="./src/images/story/story_3.png", loading="lazy", alt="")
+            .pic
+              .content 維繫及鞏固家庭個體，協助家庭成員建立互愛互勉的緊密關係，預防及處理個人或家庭問題，並針對家庭無法解決的需要，提供輔助服務。
+              .btn 
+                a(href="./src/pdf/3_Family/Brief_Family and Child Welfare Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/3_Family/MA list_Family and Child Welfare Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#four
+            img(src="./src/images/story/story_4.png", loading="lazy", alt="")
+            .pic
+              .content 為病人及其家人應付或解決因疾病引致的生活問題，從而改善他們的生活質素；並提倡社區健康生活及預防疾病教育，達至身心全面發展。
+              .btn 
+                a(href="./src/pdf/4_medical/Brief_Medical & Health Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/4_medical/MA_list_Medical & Health Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#five
+            img(src="./src/images/story/story_5.png", loading="lazy", alt="")
+            .pic
+              .content 協助殘疾人士及長期病患者發展潛能及適應社群生活的能力，以及協助戒毒康復者及更生人士重建生命，鼓勵並幫助他們融入社會。
+              .btn 
+                a(href="./src/pdf/5_Aftercare/Brief_Rehabilitation and Aftercare Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/5_Aftercare/MA_list_Rehabilitation and Aftercare Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          .img#six
+            img(src="./src/images/story/story_6.png", loading="lazy", alt="")
+            .pic
+              .content 促進社群關係，在社區內建立團結精神，並鼓勵個人參與解決社區問題，以改善社區生活質素。
+              .btn 
+                a(href="./src/pdf/6_other/Brief_Community Development and Other Services_2526.pdf" target="_blank")
+                  p 服務介紹 
+                a(href="./src/pdf/6_other/MA list_Community Development and Other Services_2526.pdf" target="_blank")
+                  p 受惠機構
+          
+          
+          
+      .bunny
+        img.bunny1.fade(src="./src/images/story/rabbit_1.png", loading="lazy", alt="")
+        img.bunny2.fade(src="./src/images/story/rabbit_2.png", loading="lazy", alt="")
+        img.bunny3.fade(src="./src/images/story/rabbit_3.png", loading="lazy", alt="")
+    section.donate
+      .block_top
+      .title
+        img.fade(src="./src/images/donate/title.png", loading="lazy", alt="")
+        p.fade 參加者可透過以下方法捐款：
+      .content 
+        .wrap 
+          .block.fade 
+            .subtitle 支票形式
+            .intro 
+              img.check(src="./src/images/donate/step_1.png", loading="lazy", alt="")
+              p 以劃線支票形式，
+                br
+                | 支票抬頭請寫上「香港公益金」；或
+            .tag 
+              img(src="./src/images/donate/tag.svg", loading="lazy", alt="")
+              p 1
+          .block.fade
+            .subtitle 善款存入
+            .intro 
+              p 把善款存入公益金於
+                br
+                | 中國銀行(香港)
+                span (賬號 : 012-874-0-008588-4) 
+                |  或
+                br
+                | 恒生銀行
+                span (賬號: 280-157553-001)
+                |  之戶口；或
+            .tag 
+              img(src="./src/images/donate/tag.svg", loading="lazy", alt="")
+              p 2
+        .wrap 
+          .block.fade#three
+            .subtitle 轉數快
+            .intro 
+              .d-flex
+                p.laptop 透過可以支援轉數快的電子錢包
+                  br
+                  |或手機應用程式，
+                  br
+                  |輸入公益金的快速支付系統識別碼
+                  br
+                  span 1034495  
+                  |  或 
+                  span 1902584
+                  br
+                  |或掃瞄右側二維碼捐款。
+                p.mobile 透過可以支援轉數快的電子錢包
+                  |或手機應用程式，
+                  br
+                  |輸入公益金的快速支付系統識別碼
+                  br
+                  span 1034495  
+                  |  或 
+                  span 1902584
+                  br
+                  |或掃瞄下方二維碼捐款。
+                //- .arrow 
+                //-   img(src="./src/images/donate/store.png", loading="lazy", alt="")
+                //-   .arrow_title
+                //-     svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 351 90", fill="none")
+                //-       path(d="M35.7821 0.868652H350.717V89.8687H35.7821L0.716797 45.3687L35.7821 0.868652Z", fill="#FF76B6")
+                //-     .arrow_p 需登入手機銀行應用程式或
+                //-       br
+                //-       |電子錢包並選擇二維碼付款功能
+                    
+                img.qrcode(src="./src/images/donate/qrcode.png", loading="lazy", alt="")
+                .arrow 
+                  img(src="./src/images/donate/store.png", loading="lazy", alt="")
+                  .arrow_title
+                    svg(xmlns="http://www.w3.org/2000/svg", viewBox="0 0 351 90", fill="none")
+                      path(d="M35.7821 0.868652H350.717V89.8687H35.7821L0.716797 45.3687L35.7821 0.868652Z", fill="#FF76B6")
+                    .arrow_p 需登入手機銀行應用程式或
+                      br
+                      |電子錢包並選擇二維碼付款功能
+                .arrow.under600
+                  img(src="./src/images/donate/store.png", loading="lazy", alt="")
+                  
+                  .arrow_p_600 需登入手機銀行應用程式或
+                    br
+                    |電子錢包並選擇二維碼付款功能
+                
+              p.note *透過轉數快捐款後，需提交載有交易日期及時間的交易截圖，及提供捐款者姓名和銀行戶口持有人姓名，以便核數。
+            .tag 
+              img(src="./src/images/donate/tag.svg", loading="lazy", alt="")
+              p 3
+      .discription 
+        .d-flex.fade_text 
+          p.detail.laptop 活動負責人收集所有善款，並於活動日後 
+            span.hl 一個月內  
+            |  將
+            br
+            span.pink_btn 付款憑據
+            |或
+            span.pink_btn 支票
+            |、連同
+            span
+              a(href="https://app.commchest.org/cd/dcd2025/Enrol_Form_www(editable).pdf" target="_blank").blue_btn 報名表格
+            |、
+            span
+              a(href="https://app.commchest.org/cd/dcd2025/DCD25_DonationSummaryForm_Editable.pdf" target="_blank").blue_btn 捐款統計表
+            |及
+            span
+              a(href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fapp.commchest.org%2Fcd%2Fdcd2025%2FDCD25_DonationRecordForm.xlsx&wdOrigin=BROWSELINK" target="_blank").blue_btn 捐款記錄表
+            br
+            |以電郵或郵寄方式交回公益金辦事處。
+          p.detail.mobile 活動負責人收集所有善款，並於活動日後 
+            span.hl 一個月內  
+            |  將
+            span.pink_btn 付款憑據
+            |或
+            span.pink_btn 支票
+            |、連同
+            span
+              a(href="https://app.commchest.org/cd/dcd2025/Enrol_Form_www(editable).pdf" target="_blank").blue_btn 報名表格
+            |、
+            span
+              a(href="https://app.commchest.org/cd/dcd2025/DCD25_DonationSummaryForm_Editable.pdf" target="_blank").blue_btn 捐款統計表
+            |及
+            span
+              a(href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fapp.commchest.org%2Fcd%2Fdcd2025%2FDCD25_DonationRecordForm.xlsx&wdOrigin=BROWSELINK" target="_blank").blue_btn 捐款記錄表
+            |以電郵或郵寄方式交回公益金辦事處。
+          p 凡捐款港幣100元或以上，可獲公益金發出之正式收據。
+      .block_bottom            
+
+    section.weartocare
+      .game 
+        .bg
+          .note
+            img.paper.laptop(src="./src/images/weartocare/note.png", loading="lazy", alt="")
+            img.paper.pad(src="./src/images/weartocare/note_768.png", loading="lazy", alt="")
+            img.paper.mobile(src="./src/images/weartocare/note_576.png", loading="lazy", alt="")
+            
+            .wrap
+              .title 
+                img.rabbit(src="./src/images/weartocare/rabbit.png", loading="lazy", alt="")
+                .text
+                  img(src="./src/images/weartocare/title.png", loading="lazy", alt="")
+              p 今年公益金便服日特別設計 WEAR TO CARE 有獎遊戲，誠邀你與家人朋友一同參與。
+                br
+                br
+                |參加者必須讚好
+                span.blue
+                  a(href="https://www.facebook.com/commchestHK" target="_blank") 「香港公益金」Facebook 專頁 
+                |或追蹤
+                span.blue
+                  a(href="https://www.instagram.com/commchesthk/" target="_blank") 「香港公益金」Instagram帳戶
+                |，讚好公益金發佈的 WEAR TO CARE 有獎遊戲貼文*，於留言處選出貼文中心儀穿搭造型，並以不多於 50 字解釋原因或分享自己為今年便服日準備的造型，再加上 
+                span.orange  #weartocare 
+                |的 hashtag，以及標註最少3位朋友 (必須為 Facebook 或 Instagram 帳戶)，就有機會贏取豐富獎品！
+                br
+                br
+                |公益金將選出 
+                span.orange 40 
+                |個最具心思及創意的留言為得獎者，獎品包括：
+                br
+                |頭獎(5名)：可獲得由 SKECHERS 贊助的 
+                span.orange 鞋履免費換領券一張  
+                | (可換領任何價值之鞋款乙對) ;
+                br
+                | 二奬(10名)：可獲得由富林工程營造有限公司贊助的 
+                span.orange city'super 禮品卡一張 
+                | (價值HK$500) ;
+                br
+                | 三獎(15名)：由貝路加有限公司贊助的
+                span.orange Papery Bunni Konbiny 環保便當盒一個或保溫瓶一個 
+                |;
+                br
+                |四獎(10名)：由貝路加有限公司贊助的
+                span.orange Papery Bunni Konbiny 環保飲管一枝及環保餐具套裝一份
+                |。
+                br
+                |禮品款式及顏色將隨機派發，恕不能選擇。
+              .card_group
+                .card
+                  .card_title
+                    p 頭獎 (5名)：鞋履免費換領券
+                  img(src="./src/images/weartocare/shoes.png", data-large="./src/images/weartocare/shoes_big.jpg", loading="lazy", alt="鞋履免費換領券")
+                .card
+                  .card_title
+                    p 二奬 (10名)：city'super 禮品卡
+                  img(src="./src/images/weartocare/coupon.png", data-large="./src/images/weartocare/coupon_big.jpg", loading="lazy", alt="city'super 禮品卡")
+                .card.cardthree
+                  .card_title
+                    p 三獎 (15名)：環保便當盒
+                      span.underline 或
+                      |保溫瓶
+                  .carousel-container
+                    .carousel-track
+                      .carousel-slide
+                        img(src="./src/images/weartocare/lunch_box.jpg", data-large="./src/images/weartocare/lunch_box_big.jpg", loading="lazy", alt="環保便當盒")
+                      .carousel-slide
+                        img(src="./src/images/weartocare/bottle.jpg", data-large="./src/images/weartocare/bottle_big.jpg", loading="lazy", alt="保溫瓶")
+                    .carousel-dots
+                      .dot.active(data-slide="0")
+                      .dot(data-slide="1")
+                .card.cardfour
+                  .card_title
+                    p 四獎 (10名) ：環保飲管
+                      span.underline 及
+                      |環保餐具
+                  .carousel-container
+                    .carousel-track
+                      .carousel-slide
+                        img(src="./src/images/weartocare/straw.jpg", data-large="./src/images/weartocare/straw_big.jpg", loading="lazy", alt="環保飲管")
+                      .carousel-slide
+                        img(src="./src/images/weartocare/ware.jpg", data-large="./src/images/weartocare/ware_big.jpg", loading="lazy", alt="環保餐具")
+                    .carousel-dots
+                      .dot.active(data-slide="0")
+                      .dot(data-slide="1")
+              p.note_text 
+                span(style="font-size: 0.8em; vertical-align: super") #
+                |註：圖片只供參考，禮品款式及顏色將隨機派發。     
+      p.duration 活動由
+        span.pink 2025年10月2日中午12時正開始，至10月28日下午6時正
+        |結束，結果將於11月7日在此網頁及公益金 Facebook 專頁及 Instagram 帳戶公布。
+        br
+        br
+        |*WEAR TO CARE 有獎遊戲貼文將於2025年10月份於公益金 Facebook 及 Instagram 發布，敬請留意公益金 Facebook 專頁及 Instagram 帳戶。遊戲詳情請參閱
+        span.blue
+          a(href="#" data-popup="terms") 條款及細則。
+        
+        // Terms and Conditions Popup
+        .terms-popup(aria-hidden="true")
+          .container(role="dialog" aria-modal="true" aria-label="條款及細則")
+            span.close-btn(aria-label="關閉") ×
+            .content
+              h2 公益金便服日 2025 – WEAR TO CARE 有獎遊戲活動條款及細則
+              .terms-content
+                ol
+                  li 香港公益金（本機構）便服日 WEAR TO CARE 有獎遊戲（活動）每名參加者參加次數只限一次，參加者禁止使用超過一個帳戶或身分。如有發現或懷疑任何參加者使用超過一個帳戶或身分參加活動，本機構有權褫奪該參加者的參加或得獎資格。
+                  li 活動由香港時間 2025 年 10 月 2 日中午 12 時正開始，至 10 月 28 日下午6時正結束（以 Facebook 及 Instagram 系統顯示的香港時間為準）。
+                  li 參加者必須讚好「香港公益金」Facebook 專頁 或追蹤「香港公益金」Instagram帳戶，讚好公益金發佈的 WEAR TO CARE 有獎遊戲貼文，於留言處選出貼文中心儀穿搭造型，並以不多於 50 字解釋原因或分享自己為今年便服日準備的造型，再加上 #weartocare 的 hashtag，以及標註最少3位朋友(必須為 Facebook 或 Instagram 帳戶)。
+                  li 本機構會搜集於指定時間內有獎遊戲貼文下的留言，內容符合主題而不帶有色情、暴力、商業、政治、宗教等信息的內容有機會上載於香港公益金便服日2025網站（本網站）／公益金的Facebook專頁或Instagram帳戶。
+                  li 貼文只會用作推廣本活動，若閣下不想內容被上載本網站／公益金的Facebook專頁或Instagram帳戶，請電郵至
+                    a(href="mailto:dress@commchest.org") dress@commchest.org
+                    |。
+                  li 活動結束後，公益金將選出40 個最具心思及創意的留言為得獎者，獎品包括：
+                    br
+                    |頭獎（5名）：可獲得由 SKECHERS 贊助的鞋履免費換領券一張（可換領任何價值之鞋款乙對）;
+                    br
+                    |二奬（10名）：由富林工程營造有限公司贊助的 city'super 禮品卡一張（價值HK$500）;
+                    br
+                    |三獎（15名）：由貝路加有限公司贊助的 Papery Bunni Konbiny 禮品（價值 HK$200 - HK$238 的環保便當盒或保溫瓶一個）;
+                    br
+                    |四獎（10名）：由貝路加有限公司贊助的 Papery Bunni Konbiny 禮品（價值合共 HK$176 的環保飲管一枝及環保餐具套裝一份）。
+                    br
+                    |禮品款式及顏色將隨機派發，恕不能選擇。
+                  li 所有參加作品必須由參加者原創，作品不能同時參加其他活動或曾刊載於任何地方。如作品涉及任何形式的抄襲，參加者將會被取消資格，而不需事先通知。
+                  li 如參加作品有相同內容被提交，只有最早提交並完成所有指定參加步驟會被評審。
+                  li 參加者／參加作品如被發現違反是次活動的條款及細則、版權或香港法律，本機構有權取消其參加資格及收回已頒發之獎品。若得獎作品因並非原創而引起任何索償，將由相關之參加者承受所有責任，本機構一概不負任何責任。
+                  li 合資格參加者參加是次活動，即被視作接受及遵守有關條款及細則。
+                  li 本機構非獎品之供應商。獎品受其供應商擬訂的條款及細則約束。有關獎品之任何問題或投訴或其相關服務質素，本機構概不負責。如有疑問，請直接與有關供應商聯絡。
+                  li 本機構保留更改或刪除是次活動的內容、條款及細則的權利，而不作事先通知。
+                  li 本機構有最終決定權，可刪除或取消任何參加作品，參加者不得異議。
+                  li 如有任何爭議，本機構保留最終決定及解釋權。
+                  li 本機構可能會使用參加者在社交平台的公開姓名及聯絡資料以安排領取獎品事宜。
+                  li 所有得獎名單將於 2025 年 11 月 7 日於本網站及公益金 Facebook 專頁及 Instagram 帳戶公布，得獎者請於 2025 年 11 月 17 日或之前以參與有獎遊戲的Facebook或Instagram帳戶inbox所需資料至香港公益金Facebook或Instagram安排領獎事宜，否則當作自動放棄領奬。
+
+
+          
+      .prize_list 
+        img.left_tree(src="./src/images/prize_list/left_tree.png", loading="lazy", alt="")
+        a(href="") 
+          img.title(src="./src/images/prize_list/title.png", loading="lazy", alt="")
+        img.right_tree(src="./src/images/prize_list/right_tree.png", loading="lazy", alt="")
+      .prize_content 
+        p 請各位得獎者於2025年11月17日或之前以參與有獎遊戲的Facebook或Instagram帳戶
+          br
+          |inbox以下資料至 
+          span.blue
+            a(href="https://www.facebook.com/commchestHK" target="_blank") 香港公益金Facebook 
+          |或 
+          span.blue
+            a(href="https://www.instagram.com/commchesthk/" target="_blank") Instagram 
+          |安排領獎：
+        .btn_group
+          .btn ① 真實姓名 (中/英文全名)
+          .btn ② 聯絡電話
+          .btn ③ 電郵地址
+
+    // 圖片放大彈窗
+    .image-popup(aria-hidden="true")
+      .container(role="dialog" aria-modal="true" aria-label="圖片預覽")
+        span.close-btn(aria-label="關閉") ×
+        .preview
+          img(src="", alt="")
+
+    section.theme#download
+      .title
+        img.rabbit(src="./src/images/theme_download/one.png", loading="lazy", alt="")
+        img.rabbit(src="./src/images/theme_download/two.png", loading="lazy", alt="")
+        img.theme_title(src="./src/images/theme_download/theme.png", loading="lazy", alt="")
+        img.rabbit(src="./src/images/theme_download/three.png", loading="lazy", alt="")
+        img.rabbit(src="./src/images/theme_download/four.png", loading="lazy", alt="")
+      .bg
+        .heart
+      .content 
+        p 今年公益金邀請了人氣 
+          span IP Bunni Konbiny 兔子便利商店 
+          |合作宣傳公益金便服日 2025，並特別設計了兩款便服日 2025 的主題背景供參加者下載。
+          br
+          br
+          |參加者可自行將背景圖片裁剪成合適的尺寸，便可應用於不同電子設備，包括手機、電腦、平板電腦、智能手錶等，隨時隨地與家人朋友分享寓行善於生活的正面信息。
+        .download
+          img(src="./src/images/theme_download/download.png", loading="lazy", alt="")
+          // ★ 可鍵盤操作的按鈕
+          .btn(tabindex="0" role="button" aria-label="立即下載：開啟主題背景彈窗")
+            .text
+              img(src="./src/images/theme_download/flower.png", loading="lazy", alt="")
+              p 立即下載
+            .shape
+              svg(xmlns="http://www.w3.org/2000/svg" width="46" height="29" viewBox="0 0 46 29" fill="none")
+                path(d="M46 0H11L0 29L46 0Z")
+
+        // ★ 主題背景彈窗（YouTube 同款樣式）
+        .wallpaper-popup(aria-hidden="true")
+          .container(role="dialog" aria-modal="true" aria-label="主題背景下載")
+            span.close-btn(aria-label="關閉") ×
+            .preview
+              // 換成你的示意合成圖
+              img(src="./src/images/theme_download/download.png", loading="lazy", alt="主題背景預覽示意")
+            .actions
+              a.wp-btn(href="./src/wallpaper/DCD2025_Wallpaper_A_Desktop.jpg" target="_blank") 主題背景A（水平）
+              a.wp-btn(href="./src/wallpaper/DCD2025_Wallpaper_B_Desktop.jpg" target="_blank") 主題背景B（水平）
+              a.wp-btn(href="./src/wallpaper/DCD2025_Wallpaper_A_Mobile.jpg" target="_blank") 主題背景A（垂直）
+              a.wp-btn(href="./src/wallpaper/DCD2025_Wallpaper_B_Mobile.jpg" target="_blank") 主題背景B（垂直）
+    section.signup 
+      .title
+        img(src="./src/images/signup/title.png", loading="lazy", alt="")
+      .content
+        .wrap.sign_up 
+          .wrap_title
+            img.text(src="./src/images/signup/signup.png", loading="lazy", alt="")
+            img.icon(src="./src/images/signup/signup_pic.svg", loading="lazy", alt="")
+          .btn_group.mint
+            a(href="#").btn
+              img(src="./src/images/signup/arrow.svg", loading="lazy", alt="")
+              p 機構/學校
+            a(href="#").btn
+              img(src="./src/images/signup/arrow.svg", loading="lazy", alt="")
+              p 個人
+        .wrap.download 
+          .wrap_title
+            img.text(src="./src/images/signup/download.png", loading="lazy", alt="")
+            img.icon(src="./src/images/signup/download.svg", loading="lazy", alt="")
+          .btn_group.orange
+            a(href="#").btn
+              img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
+              p 報名表格
+            a(href="#").btn
+              img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
+              p 海報
+            a(href="#").btn
+              img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
+              p 活動參加指引
+            a(href="#").btn
+              img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
+              p 家長回條
+                br
+                |（只供學校使用） 
+            a(href="#").btn
+              img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
+              p 捐款記錄表
+            a(href="#").btn
+              img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
+              p 捐款統計表
+            a(href="#").btn
+              img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
+              p 額外宣傳物料
+                br
+                |索取表格   
+            a(href="#").btn
+              img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
+              p 最具個人風格獎
+                br
+                |獎狀  
+            a(href="#download").btn
+              img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
+              p 主題背景  
+
+    section.sponsor 
+      .sponsor_laptop
+        .top
+          .wrap.left
+            .title 鑽石贊助機構
+            .img
+              img(src="./src/images/sponsor/hang_bank.svg", loading="lazy", alt="")
+              img(src="./src/images/sponsor/nameson.svg", loading="lazy", alt="")
+          .wrap.right
+            .title 銅贊助機構
+            .img
+              img(src="./src/images/sponsor/perfit_logo.jpg", loading="lazy", alt="")
+        .middle 
+          .wrap.left
+            .title 全力支持
+            .img
+              img.harbour(src="./src/images/sponsor/harbour.svg", loading="lazy", alt="")
+              img.time_square(src="./src/images/sponsor/time_square.svg", loading="lazy", alt="")
+              img.hollywood(src="./src/images/sponsor/hollywood.svg", loading="lazy", alt="")
+          .wrap.right
+            .title 媒體夥伴
+            .img
+              img.head(src="./src/images/sponsor/head.jpg", loading="lazy", alt="")
+              img.job(src="./src/images/sponsor/job.png", loading="lazy", alt="")
+              img.new(src="./src/images/sponsor/new_holiday.svg", loading="lazy", alt="")
+        .bottom
+          .wrap
+            .title 主辦機構
+            .img
+              img.chest(src="./src/images/sponsor/community_chest.svg", loading="lazy", alt="")
+              img.horse(src="./src/images/sponsor/horse.svg", loading="lazy", alt="")
+            p 香港公益金有賴慈善夥伴 — 香港賽馬會的慷慨資助，得以將全數善款，
+              br
+              |不扣除任何行政開支，100%撥捐逾160間社會福利會員機構，惠澤社群。
+      .sponsor_mobile
+        
+        .wrap
+          .title 鑽石贊助機構
+          .img
+            img.hang_bank(src="./src/images/sponsor/hang_bank.svg", loading="lazy", alt="")
+            img.nameson(src="./src/images/sponsor/nameson.svg", loading="lazy", alt="")
+        .wrap
+          .title 銅贊助機構
+          .img
+            img.perfit_logo(src="./src/images/sponsor/perfit_logo.jpg", loading="lazy", alt="")
+      
+        .wrap
+          .title 全力支持
+          .img
+            img.harbour(src="./src/images/sponsor/harbour.svg", loading="lazy", alt="")
+            img.time_square(src="./src/images/sponsor/time_square.svg", loading="lazy", alt="")
+            img.hollywood(src="./src/images/sponsor/hollywood.svg", loading="lazy", alt="")
+        .wrap
+          .title 媒體夥伴
+          .img
+            img.head(src="./src/images/sponsor/head.jpg", loading="lazy", alt="")
+            img.job(src="./src/images/sponsor/job.png", loading="lazy", alt="")
+            img.new(src="./src/images/sponsor/new_holiday.svg", loading="lazy", alt="")
+      
+        .wrap.bottom
+          .title 主辦機構
+          .img
+            img.chest(src="./src/images/sponsor/community_chest.svg", loading="lazy", alt="")
+            img.horse(src="./src/images/sponsor/horse.svg", loading="lazy", alt="")
+          p 香港公益金有賴慈善夥伴 — 香港賽馬會的慷慨資助，得以將全數善款，
+            br
+            |不扣除任何行政開支，100%撥捐逾160間社會福利會員機構，惠澤社群。
+    footer
+
+      .bg
+        .bg_color
+        
+        .content
+          .logo
+            img(src="./src/images/footer/community_chest.svg", loading="lazy", alt="")
+            p.note 如有任何疑問，請聯絡香港公益金
+          .detail
+            .address
+              img(src="./src/images/footer/address.svg", loading="lazy", alt="")
+              a(href="https://maps.app.goo.gl/tMx5JXmTTayD3Z8U6" target="_blank") 香港灣仔告士打道三十九號夏慤大廈十八樓一八零五室
+            .d-flex
+              .wrap.phone
+                img(src="./src/images/footer/phone.svg", loading="lazy", alt="")
+                .tel
+                  a(href="tel:+85225996112") 2599 6112 
+                  span /
+                  a(href="tel:+85225996127")  2599 6127
+              .wrap.email
+                img(src="./src/images/footer/email.svg", loading="lazy", alt="")
+                a(href="mailto:dress@commchest.org") dress@commchest.org
+              .wrap.fax
+                img(src="./src/images/footer/fax.svg", loading="lazy", alt="")
+                a(href="#") 2506 1201
+              .wrap.www
+                img(src="./src/images/footer/www.svg", loading="lazy", alt="")
+                a(href="https://www.commchest.org" target="_blank") www.commchest.org
+        .social 
+          a(href="https://www.facebook.com/commchestHK" target="_blank")
+            img(src="./src/images/footer/facebook.svg", loading="lazy", alt="")
+          a(href="https://www.instagram.com/commchesthk/" target="_blank")
+            img(src="./src/images/footer/instagram.svg", loading="lazy", alt="")
+          a(href="https://www.youtube.com/@commchestHK/featured" target="_blank")
+            img(src="./src/images/footer/youtube.svg", loading="lazy", alt="")
+        .footer_copyright 
+          img.rabbit(src="./src/images/footer/rabbit.svg", loading="lazy", alt="")
+          img.copyright(src="./src/images/footer/copyright.svg", loading="lazy", alt="")
+
+  // 只載 jQuery + main.js
+  script(src="https://code.jquery.com/jquery-3.7.1.min.js")
+  script(defer src="./src/js/main.js")
+
+        
