@@ -40,57 +40,80 @@ function debounce(func, wait) {
 }
 
 // --- 跑馬燈 ---
-document.addEventListener('DOMContentLoaded', function() {
-  var tracks = document.querySelectorAll('.marquee .track');
-  var originalContent = {}; // 儲存原始內容
-  var resetInterval;
+var MarqueeController = {
+  tracks: null,
+  originalContent: {},
+  resetInterval: null,
+  isInitialized: false,
   
-  // 儲存每個track的原始內容
-  tracks.forEach(function(track, index) {
-    originalContent[index] = track.innerHTML;
-  });
+  init: function() {
+    if (this.isInitialized) return;
+    
+    this.tracks = document.querySelectorAll('.marquee .track');
+    if (this.tracks.length === 0) return;
+    
+    // 儲存每個track的原始內容
+    this.tracks.forEach(function(track, index) {
+      MarqueeController.originalContent[index] = track.innerHTML;
+    });
+    
+    this.isInitialized = true;
+  },
   
-  function initMarquee() {
-    tracks.forEach(function(track, index) {
+  start: function() {
+    if (!this.isInitialized) this.init();
+    if (this.tracks.length === 0) return;
+    
+    // 清理舊的定時器
+    if (this.resetInterval) {
+      clearInterval(this.resetInterval);
+    }
+    
+    // 初始化跑馬燈
+    this.resetAnimation();
+    
+    // 每30秒重新初始化一次（防止任何累積問題）
+    this.resetInterval = setInterval(function() {
+      MarqueeController.resetAnimation();
+    }, 30000);
+  },
+  
+  resetAnimation: function() {
+    var self = this;
+    this.tracks.forEach(function(track, index) {
       // 停止當前動畫
       track.style.animation = 'none';
       
       // 重置到原始內容
-      track.innerHTML = originalContent[index];
+      track.innerHTML = self.originalContent[index];
       
       // 添加一次複製以確保無縫循環
-      track.innerHTML += originalContent[index];
+      track.innerHTML += self.originalContent[index];
 
       // 強制重排並重新啟動動畫
       track.offsetHeight;
       track.style.animation = null;
     });
-  }
+  },
   
-  function startMarquee() {
-    // 清理舊的定時器
-    if (resetInterval) {
-      clearInterval(resetInterval);
+  stop: function() {
+    if (this.resetInterval) {
+      clearInterval(this.resetInterval);
+      this.resetInterval = null;
     }
-    
-    // 初始化跑馬燈
-    initMarquee();
-    
-    // 每30秒重新初始化一次（防止任何累積問題）
-    resetInterval = setInterval(function() {
-      initMarquee();
-    }, 30000); // 30秒重置一次
   }
-  
-  // 啟動跑馬燈
-  startMarquee();
-  
-  // 監聽頁面可見性變化，當頁面重新可見時重新初始化
-  document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) {
-      startMarquee();
-    }
-  });
+};
+
+// 初始化跑馬燈（但不啟動）
+document.addEventListener('DOMContentLoaded', function() {
+  MarqueeController.init();
+});
+
+// 監聽頁面可見性變化
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden && MarqueeController.isInitialized) {
+    MarqueeController.start();
+  }
 });
 
 // --- 共用：開/關彈窗 ---
@@ -491,6 +514,11 @@ domCache.$window.on('load', function() {
     setTimeout(function() {
       $('.loading-screen').remove();
       
+      // Loading 結束後立即啟動跑馬燈
+      if (typeof MarqueeController !== 'undefined') {
+        MarqueeController.start();
+      }
+      
       // Loading 結束後延遲 0.3 秒觸發 fade_fv 元素
       setTimeout(function() {
         $('.fade_fv').addClass('fade-in');
@@ -777,3 +805,52 @@ document.addEventListener('DOMContentLoaded', function() {
     initFadeAnimation();
   };
 });
+
+// --- 跑馬燈保險機制 ---
+// 確保跑馬燈在任何情況下都能正常啟動
+setTimeout(function() {
+  if (typeof MarqueeController !== 'undefined') {
+    // 檢查 loading screen 是否還存在
+    var loadingScreen = document.querySelector('.loading-screen');
+    if (!loadingScreen) {
+      // loading screen 已移除，啟動跑馬燈
+      MarqueeController.start();
+    } else {
+      // loading screen 還存在，等待更長時間後再次檢查
+      setTimeout(function() {
+        MarqueeController.start();
+      }, 2000);
+    }
+  }
+}, 3000); // 3秒後檢查
+
+// 針對手機設備的額外保險機制
+if (/Mobi|Android/i.test(navigator.userAgent)) {
+  window.addEventListener('focus', function() {
+    setTimeout(function() {
+      if (typeof MarqueeController !== 'undefined' && MarqueeController.isInitialized) {
+        MarqueeController.start();
+      }
+    }, 500);
+  });
+  
+  // 觸摸事件後也重新啟動跑馬燈
+  document.addEventListener('touchstart', function() {
+    setTimeout(function() {
+      if (typeof MarqueeController !== 'undefined' && MarqueeController.isInitialized) {
+        var tracks = document.querySelectorAll('.marquee .track');
+        var hasAnimation = false;
+        tracks.forEach(function(track) {
+          if (track.style.animation && track.style.animation !== 'none') {
+            hasAnimation = true;
+          }
+        });
+        
+        // 如果沒有動畫在運行，重新啟動
+        if (!hasAnimation) {
+          MarqueeController.start();
+        }
+      }
+    }, 1000);
+  }, { once: true }); // 只執行一次
+}
