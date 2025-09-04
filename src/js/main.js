@@ -823,6 +823,23 @@ $(function() {
       startAutoPlay();
     });
     
+    // 箭頭按鈕點擊事件
+    $container.find('.carousel-prev').on('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      prevSlide();
+      clearInterval(autoPlayInterval);
+      startAutoPlay();
+    });
+    
+    $container.find('.carousel-next').on('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      nextSlide();
+      clearInterval(autoPlayInterval);
+      startAutoPlay();
+    });
+    
     // 滑鼠懸停時暫停自動播放
     $container.on('mouseenter', function() {
       clearInterval(autoPlayInterval);
