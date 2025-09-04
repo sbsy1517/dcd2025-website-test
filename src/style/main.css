@@ -5981,11 +5981,13 @@ body.modal-open .marquee {
   font-weight: 700;
   text-align: center;
   margin-bottom: 32px;
+  padding-right: 60px;
 }
 @media (max-width: 640px) {
   .terms-popup .container .content .title {
     font-size: 14px;
     margin-bottom: 24px;
+    padding-right: 50px;
   }
 }
 .terms-popup .container .content h2 {
