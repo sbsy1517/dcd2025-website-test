@@ -2544,7 +2544,7 @@ header
             height: 1450px
         +container-576px
             height: 2300px
-        +container-414px
+        +container-500px
             height: 2150px
         .bg
             display: flex
@@ -2564,7 +2564,7 @@ header
                 height: 1450px
             +container-576px
                 height: 2350px
-            +container-414px
+            +container-500px
                 height: 2200px
 
             .note   
@@ -2593,8 +2593,10 @@ header
                         width: 630px
                     +container-576px
                         width: 576px
-                    +container-414px
+                    +container-500px
                         width: 540px
+                    // +container-414px
+                    //     width: 540px
                 img.laptop
                     +container-768px
                         display: none
@@ -2936,7 +2938,26 @@ header
             .left_tree, .right_tree
                 height: 20px
         +container-576px
-            width: 600px
+            width: 100%
+            flex-direction: column
+            gap: 16px
+            padding: 0 20px
+            
+            a
+                display: inline-flex
+                padding: 12px 24px
+                border: 3px solid $light_blue
+                border-radius: 999px
+                
+                .title
+                    width: 150px
+                    
+                &:hover
+                    background-color: $light_blue
+                    
+            .left_tree, .right_tree
+                height: 16px
+                display: block // 確保在手機版顯示
                 
 
 

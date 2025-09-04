@@ -3123,7 +3123,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
     height: 2300px;
   }
 }
-@media (max-width: 414px) {
+@media (max-width: 500px) {
   .weartocare .game {
     height: 2150px;
   }
@@ -3153,7 +3153,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
     height: 2350px;
   }
 }
-@media (max-width: 414px) {
+@media (max-width: 500px) {
   .weartocare .game .bg {
     height: 2200px;
   }
@@ -3186,7 +3186,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
     width: 576px;
   }
 }
-@media (max-width: 414px) {
+@media (max-width: 500px) {
   .weartocare .game .bg .note img.paper {
     width: 540px;
   }
@@ -3583,7 +3583,26 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 576px) {
   .weartocare .prize_list {
-    width: 600px;
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 20px;
+  }
+  .weartocare .prize_list a {
+    display: inline-flex;
+    padding: 12px 24px;
+    border: 3px solid #4EB7DD;
+    border-radius: 999px;
+  }
+  .weartocare .prize_list a .title {
+    width: 150px;
+  }
+  .weartocare .prize_list a:hover {
+    background-color: #4EB7DD;
+  }
+  .weartocare .prize_list .left_tree, .weartocare .prize_list .right_tree {
+    height: 16px;
+    display: block;
   }
 }
 .weartocare .prize_content {
