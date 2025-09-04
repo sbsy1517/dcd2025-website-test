@@ -3466,8 +3466,8 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   background: transparent;
   border: none;
   border-radius: 50%;
@@ -3487,8 +3487,8 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 1024px) {
   .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
   }
   .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn svg {
     width: 16px;
@@ -3497,8 +3497,8 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 768px) {
   .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn {
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
   }
   .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn svg {
     width: 14px;
@@ -3515,10 +3515,10 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   transform: translateY(-50%) scale(0.95);
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn.carousel-prev {
-  left: 10px;
+  left: 5px;
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-nav-btn.carousel-next {
-  right: 10px;
+  right: 5px;
 }
 .weartocare .game .bg .note .wrap .card_group .card .carousel-container .carousel-track {
   display: flex;
