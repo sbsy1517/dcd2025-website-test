@@ -507,6 +507,12 @@ $(function() {
 });
 
 // --- Loading Page 功能 ---
+$(document).ready(function() {
+  // 頁面開始載入時立即鎖定滾動並回到頂部
+  $('body').addClass('loading-lock');
+  window.scrollTo(0, 0);
+});
+
 domCache.$window.on('load', function() {
   // 頁面完全載入後，向上滑動 loading screen
   setTimeout(function() {
@@ -515,6 +521,9 @@ domCache.$window.on('load', function() {
     // 動畫完成後移除元素
     setTimeout(function() {
       $('.loading-screen').remove();
+      
+      // 解除滾動鎖定
+      $('body').removeClass('loading-lock');
       
       // Loading 結束後立即啟動跑馬燈
       if (typeof MarqueeController !== 'undefined') {
@@ -768,7 +777,6 @@ $(function() {
     
     // 綁定觸控事件
     $track.on('touchstart', function(e) {
-      console.log('Touch start detected'); // 調試用
       handleTouchStart(e);
     });
     
@@ -777,7 +785,6 @@ $(function() {
     });
     
     $track.on('touchend touchcancel', function(e) {
-      console.log('Touch end detected'); // 調試用
       handleTouchEnd(e);
     });
     
