@@ -739,7 +739,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 576px) {
   .home_page .content .menu .language a {
-    widht: 30px;
+    width: 30px;
     height: 30px;
     font-size: 14px;
   }
