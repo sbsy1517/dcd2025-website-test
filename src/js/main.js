@@ -511,6 +511,15 @@ $(document).ready(function() {
   // 頁面開始載入時立即鎖定滾動並回到頂部
   $('body').addClass('loading-lock');
   window.scrollTo(0, 0);
+  
+  // 確保 .theme 在載入時就是可見的，但隱藏 popup
+  $('.theme').css({
+    'display': 'flex',
+    'visibility': 'visible'
+  });
+  $('.theme .wallpaper-popup, .theme .popup').hide();
+  
+  console.log('Theme section preloaded and made visible during page load');
 });
 
 domCache.$window.on('load', function() {
@@ -545,27 +554,156 @@ domCache.$window.on('load', function() {
 });
 
 // --- 平滑滾動到下載區功能 ---
+// $(function() {
+//   // 頁面載入完成的標記
+//   var isPageReady = false;
+  
+//   // 監聽頁面完全載入
+//   $(window).on('load', function() {
+//     setTimeout(function() {
+//       isPageReady = true;
+//       console.log('Page is now ready for scroll operations');
+//     }, 2000); // 等待 2 秒確保所有內容載入完成
+//   });
+  
+//   // 為所有下載區連結添加平滑滾動
+//   $('a[href="#download"], a.download').on('click', function(e) {
+//     e.preventDefault();
+    
+//     console.log('Download button clicked, isPageReady:', isPageReady);
+    
+//     // 先停止任何現在的滾動動畫
+//     $('html, body').stop(true, true);
+    
+//     function executeScroll() {
+//       // 等待一個動畫幀確保 DOM 穩定
+//       requestAnimationFrame(function() {
+//         var target = $('#download');
+        
+//         if (target.length) {
+//           // 強制重新計算布局
+//           document.body.offsetHeight;
+//           target[0].offsetHeight;
+          
+//           var targetOffset = target.offset().top - 200;
+//           var currentScroll = $(window).scrollTop();
+          
+//           console.log('=== Scroll Debug Info ===');
+//           console.log('Target element:', target[0]);
+//           console.log('Target offset top:', target.offset().top);
+//           console.log('Calculated scroll position:', targetOffset);
+//           console.log('Current scroll position:', currentScroll);
+//           console.log('Distance to scroll:', targetOffset - currentScroll);
+          
+//           // 執行滾動
+//           $('html, body').animate({
+//             scrollTop: targetOffset
+//           }, {
+//             duration: 800,
+//             easing: 'easeInOutQuart',
+//             step: function(now, fx) {
+//               console.log('Animating to position:', Math.round(now));
+//             },
+//             complete: function() {
+//               var finalPosition = $(window).scrollTop();
+//               console.log('Animation completed. Final position:', finalPosition);
+//               console.log('Expected position:', targetOffset);
+//               console.log('Position difference:', Math.abs(finalPosition - targetOffset));
+//             }
+//           });
+//         } else {
+//           console.error('Target element #download not found!');
+//         }
+//       });
+//     }
+    
+//     if (isPageReady) {
+//       // 頁面已準備好，立即執行
+//       console.log('Page ready, executing scroll immediately');
+//       executeScroll();
+//     } else {
+//       // 頁面還沒準備好，等待準備完成
+//       console.log('Page not ready, waiting for page to be ready...');
+//       var readyCheckInterval = setInterval(function() {
+//         if (isPageReady) {
+//           clearInterval(readyCheckInterval);
+//           console.log('Page became ready, executing scroll');
+//           executeScroll();
+//         }
+//       }, 100);
+      
+//       // 最多等待 8 秒，然後強制執行
+//       setTimeout(function() {
+//         if (!isPageReady) {
+//           clearInterval(readyCheckInterval);
+//           console.log('Timeout reached, forcing scroll execution');
+//           executeScroll();
+//         }
+//       }, 8000);
+//     }
+//   });
+  
+//   // 自定義緩動函數
+//   $.easing.easeInOutQuart = function (x, t, b, c, d) {
+//     if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+//     return -c/2 * ((t-=2)*t*t*t - 2) + b;
+//   };
+// });
+
+// --- 平滑滾動到下載區功能 ---
 $(function() {
   // 為所有下載區連結添加平滑滾動
   $('a[href="#download"], a.download').on('click', function(e) {
     e.preventDefault();
     
-    var target = $('#download');
-    if (target.length) {
-      var targetOffset = target.offset().top - 200; // 減去 200px
-      
-      $('html, body').animate({
-        scrollTop: targetOffset
-      }, 800, 'easeInOutQuart'); // 800ms 的平滑動畫
-    }
+    // 先停止任何現有的滾動動畫
+    $('html, body').stop(true, true);
+    
+    // 使用延遲確保元素位置穩定
+    setTimeout(function() {
+      var target = $('#download');
+      if (target.length) {
+        // 多次強制重新計算布局
+        document.body.offsetHeight;
+        target[0].offsetHeight;
+        $(window).trigger('resize'); // 觸發 resize 確保所有元素重新計算
+        
+        // 再次強制計算
+        setTimeout(function() {
+          var targetOffset = target.offset().top - 250;
+          
+          console.log('Target position calculated:', targetOffset);
+          console.log('Current scroll position:', $(window).scrollTop());
+          
+          // 使用較短的動畫時間和簡單的緩動
+          $('html, body').animate({
+            scrollTop: targetOffset
+          }, {
+            duration: 600, // 減少動畫時間
+            easing: 'swing', // 使用內建的緩動函數
+            complete: function() {
+              console.log('Scroll completed at position:', $(window).scrollTop());
+              
+              // 動畫完成後再次檢查位置是否正確
+              setTimeout(function() {
+                var finalTargetOffset = target.offset().top - 250;
+                var currentPosition = $(window).scrollTop();
+                if (Math.abs(currentPosition - finalTargetOffset) > 10) {
+                  console.log('Position correction needed, adjusting...');
+                  window.scrollTo(0, finalTargetOffset);
+                }
+              }, 100);
+            }
+          });
+        }, 50);
+      } else {
+        console.log('Target element not found!');
+      }
+    }, 100);
   });
-  
-  // 自定義緩動函數
-  $.easing.easeInOutQuart = function (x, t, b, c, d) {
-    if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
-    return -c/2 * ((t-=2)*t*t*t - 2) + b;
-  };
 });
+
+
 
 // --- 優化的無限循環輪播功能 (支援觸控滑動) ---
 $(function() {
