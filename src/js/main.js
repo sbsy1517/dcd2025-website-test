@@ -506,11 +506,62 @@ $(function() {
   }, 250));
 });
 
-// --- Loading Page 功能（改進版，包含超時保護）---
+// --- 下載區圖片預載入功能 ---
+function preloadDownloadImages() {
+  var downloadImages = [
+    './src/images/theme_download/one.png',
+    './src/images/theme_download/two.png',
+    './src/images/theme_download/theme.png',
+    './src/images/theme_download/three.png',
+    './src/images/theme_download/four.png',
+    './src/images/theme_download/download.png',
+    './src/images/theme_download/flower.png',
+    './src/images/signup/title.png',
+    './src/images/signup/signup.png',
+    './src/images/signup/signup_pic.svg',
+    './src/images/signup/download.png',
+    './src/images/signup/download.svg',
+    './src/images/signup/pdf.svg',
+    './src/images/signup/arrow.svg'
+  ];
+  
+  var loadedCount = 0;
+  var totalImages = downloadImages.length;
+  
+  console.log('開始預載入下載區圖片...', totalImages + '個圖片');
+  
+  downloadImages.forEach(function(src) {
+    var img = new Image();
+    img.onload = function() {
+      loadedCount++;
+      console.log('下載區圖片載入完成:', src, '(' + loadedCount + '/' + totalImages + ')');
+      
+      // 如果所有下載區圖片都載入完成，觸發自定義事件
+      if (loadedCount === totalImages) {
+        $(document).trigger('downloadImagesLoaded');
+        console.log('所有下載區圖片預載入完成！');
+      }
+    };
+    img.onerror = function() {
+      loadedCount++;
+      console.warn('下載區圖片載入失敗:', src);
+      
+      if (loadedCount === totalImages) {
+        $(document).trigger('downloadImagesLoaded');
+      }
+    };
+    img.src = src;
+  });
+}
+
+// --- Loading Page 功能（改進版，包含超時保護和下載區優先載入）---
 $(document).ready(function() {
   // 頁面開始載入時立即鎖定滾動並回到頂部
   $('body').addClass('loading-lock');
   window.scrollTo(0, 0);
+  
+  // 立即開始預載入下載區圖片
+  preloadDownloadImages();
   
   // 強制超時保護：最多 8 秒後必須移除 loading
   var loadingTimeout = setTimeout(function() {
@@ -519,6 +570,25 @@ $(document).ready(function() {
   }, 8000); // 8秒超時
   
   var isLoadingRemoved = false;
+  var isDownloadImagesLoaded = false;
+  var isWindowLoaded = false;
+  
+  // 監聽下載區圖片載入完成事件
+  $(document).on('downloadImagesLoaded', function() {
+    isDownloadImagesLoaded = true;
+    console.log('下載區圖片載入完成，檢查是否可以移除載入畫面...');
+    checkAndRemoveLoading();
+  });
+  
+  function checkAndRemoveLoading() {
+    // 只有當下載區圖片載入完成且頁面載入完成時，才移除載入畫面
+    if (isDownloadImagesLoaded && isWindowLoaded && !isLoadingRemoved) {
+      console.log('所有條件滿足，移除載入畫面');
+      setTimeout(function() {
+        removeLoadingScreen();
+      }, 500); // 稍微延遲以確保視覺效果
+    }
+  }
   
   function removeLoadingScreen() {
     if (isLoadingRemoved) return; // 防止重複執行
@@ -554,11 +624,20 @@ $(document).ready(function() {
   
   // 原來的載入完成邏輯
   domCache.$window.on('load', function() {
-    // 頁面完全載入後，向上滑動 loading screen
-    setTimeout(function() {
-      removeLoadingScreen();
-    }, 1000); // 顯示 loading 1 秒鐘
+    // 頁面完全載入後，標記為已載入並檢查是否可以移除載入畫面
+    isWindowLoaded = true;
+    console.log('Window load 事件觸發，檢查是否可以移除載入畫面...');
+    checkAndRemoveLoading();
   });
+  
+  // 額外保護：如果下載區圖片載入時間過長，2.5秒後強制標記為完成
+  setTimeout(function() {
+    if (!isDownloadImagesLoaded) {
+      console.warn('下載區圖片載入超時，強制標記為完成');
+      isDownloadImagesLoaded = true;
+      checkAndRemoveLoading();
+    }
+  }, 2500);
   
   // 額外保護：如果 window.load 事件沒觸發，3.5秒後也要移除
   setTimeout(function() {
@@ -577,8 +656,7 @@ $(function() {
     
     var target = $('#download');
     if (target.length) {
-      // 使用固定偏移量 -100px 來達到正確的滾動位置
-      var targetOffset = target.offset().top - 100;
+      var targetOffset = target.offset().top - 200; // 減去 200px
       
       $('html, body').animate({
         scrollTop: targetOffset
