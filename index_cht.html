@@ -25,8 +25,33 @@
     <div class="loading-screen">
       <div class="loading-container">
         <div class="loading-logo"><img src="./src/images/home_page/logo.svg" alt="香港公益金"></div>
+        <div class="loading-progress">載入中...</div>
       </div>
     </div>
+    <script>
+      // 緊急備援：如果 JavaScript 出錯，5秒後強制移除 loading
+      var loadingMessages = ['載入中...', '載入樣式...', '載入圖片...', '準備就緒...'];
+      var messageIndex = 0;
+      var progressElement = document.querySelector('.loading-progress');
+      
+      // 更新載入進度訊息
+      var progressInterval = setInterval(function() {
+        if (progressElement && messageIndex < loadingMessages.length - 1) {
+          messageIndex++;
+          progressElement.textContent = loadingMessages[messageIndex];
+        }
+      }, 800);
+      
+      setTimeout(function() {
+        var loading = document.querySelector('.loading-screen');
+        if (loading) {
+          loading.style.display = 'none';
+          document.body.style.overflow = 'auto';
+          clearInterval(progressInterval);
+          console.warn('Emergency loading removal activated');
+        }
+      }, 5000);
+    </script>
     <header>
       <div class="marquee">
         <div class="track"> <img src="./src/images/header/header.svg" alt=""><img src="./src/images/header/header.svg" alt=""></div>

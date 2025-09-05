@@ -506,16 +506,25 @@ $(function() {
   }, 250));
 });
 
-// --- Loading Page 功能 ---
+// --- Loading Page 功能（改進版，包含超時保護）---
 $(document).ready(function() {
   // 頁面開始載入時立即鎖定滾動並回到頂部
   $('body').addClass('loading-lock');
   window.scrollTo(0, 0);
-});
-
-domCache.$window.on('load', function() {
-  // 頁面完全載入後，向上滑動 loading screen
-  setTimeout(function() {
+  
+  // 強制超時保護：最多 8 秒後必須移除 loading
+  var loadingTimeout = setTimeout(function() {
+    console.warn('Loading timeout reached, force removing loading screen');
+    removeLoadingScreen();
+  }, 8000); // 8秒超時
+  
+  var isLoadingRemoved = false;
+  
+  function removeLoadingScreen() {
+    if (isLoadingRemoved) return; // 防止重複執行
+    isLoadingRemoved = true;
+    clearTimeout(loadingTimeout); // 清除超時定時器
+    
     $('.loading-screen').addClass('slide-up');
     
     // 動畫完成後移除元素
@@ -541,7 +550,23 @@ domCache.$window.on('load', function() {
       }, 500); // 延遲 0.5 秒
       
     }, 400); // 等待滑動動畫完成
-  }, 1000); // 顯示 loading 1 秒鐘
+  }
+  
+  // 原來的載入完成邏輯
+  domCache.$window.on('load', function() {
+    // 頁面完全載入後，向上滑動 loading screen
+    setTimeout(function() {
+      removeLoadingScreen();
+    }, 1000); // 顯示 loading 1 秒鐘
+  });
+  
+  // 額外保護：如果 window.load 事件沒觸發，3.5秒後也要移除
+  setTimeout(function() {
+    if (!isLoadingRemoved) {
+      console.warn('Window load event not fired, removing loading screen anyway');
+      removeLoadingScreen();
+    }
+  }, 3500);
 });
 
 // --- 平滑滾動到下載區功能 ---
