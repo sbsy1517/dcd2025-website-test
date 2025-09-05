@@ -7,30 +7,21 @@
     <meta name="author" content="香港公益金">
     <meta name="description" content="「公益金便服日」自1993年首次舉辦以來，現已成為公益金其中一個廣受社會各界人士歡迎的籌款活動。參加者只需捐款港幣 70 元或以上（學生不設最低捐款額），便可於便服日活動當天穿上喜愛的便服上班或上學，共襄善舉。">
     <meta name="copyright" content="© 香港公益金 2025 - 版權所有，不得轉載。">
-    <!-- Animate.css（v4）-->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://code.jquery.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- 預載入關鍵字體-->
     <link rel="preload" href="./src/font/GenSenRounded2TW-M.otf" as="font" type="font/otf" crossorigin>
     <link rel="preload" href="./src/font/GenSenRounded2TW-B.otf" as="font" type="font/otf" crossorigin>
-    <!-- 預載入首屏重要圖片-->
     <link rel="preload" href="./src/images/home_page/fv.png" as="image">
     <link rel="preload" href="./src/images/home_page/logo.svg" as="image">
     <link rel="preload" href="./src/images/header/header.svg" as="image">
-    <!-- 預連接外部資源-->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://code.jquery.com">
-    <!-- 你的主樣式-->
-    <link rel="stylesheet" href="/src/style/main.css">
+    <link rel="stylesheet" href="./src/style/reset.css">
+    <link rel="stylesheet" href="./src/style/main.css">
     <link rel="icon" type="image/x-icon" href="./src/images/favicon/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="./src/images/favicon/apple-touch-icon.png">
-    <link rel="preload" href="./src/style/reset.css" as="style">
-    <link rel="stylesheet" href="./src/style/reset.css">
-    <link rel="preload" href="./src/style/main.css" as="style">
-    <link rel="stylesheet" href="./src/style/main.css">
     <title>公益金便服日2025 | WEAR TO CARE</title>
   </head>
   <body>
-    <!-- Loading 頁面-->
     <div class="loading-screen">
       <div class="loading-container">
         <div class="loading-logo"><img src="./src/images/home_page/logo.svg" alt="香港公益金"></div>
@@ -47,7 +38,6 @@
           <div class="menu_btn mobile"><span></span></div>
         </div>
       </div>
-      <!-- 手機版側邊選單-->
       <div class="mobile-menu-overlay"></div>
       <div class="mobile-menu">
         <div class="mobile-menu-header">
@@ -404,7 +394,6 @@
         </div>
       </div>
       <p class="duration fade_text">活動由<span class="pink">2025年10月2日中午12時正開始，至10月28日下午6時正</span>結束，結果將於11月7日在此網頁及公益金 Facebook 專頁及 Instagram 帳戶公布。<br><br>*WEAR TO CARE 有獎遊戲貼文將於2025年10月份於公益金 Facebook 及 Instagram 發布，敬請留意公益金 Facebook 專頁及 Instagram 帳戶。遊戲詳情請參閱<span class="blue"><a href="#" data-popup="terms">條款及細則。</a></span>
-        <!-- Terms and Conditions Popup-->
         <div class="terms-popup" aria-hidden="true">
           <div class="container" role="dialog" aria-modal="true" aria-label="條款及細則"><span class="close-btn" aria-label="關閉">×</span>
             <div class="content">
@@ -443,7 +432,6 @@
         </div>
       </div>
     </section>
-    <!-- 圖片放大彈窗-->
     <div class="image-popup" aria-hidden="true">
       <div class="container" role="dialog" aria-modal="true" aria-label="圖片預覽"><span class="close-btn" aria-label="關閉">×</span>
         <div class="preview"><img src="" alt=""></div>
@@ -457,7 +445,6 @@
       <div class="content fade_text">
         <p>今年公益金邀請了人氣 <span>IP Bunni Konbiny 兔子便利商店 </span>合作宣傳公益金便服日 2025，並特別設計了兩款便服日 2025 的主題背景供參加者下載。<br><br>參加者可自行將背景圖片裁剪成合適的尺寸，便可應用於不同電子設備，包括手機、電腦、平板電腦、智能手錶等，隨時隨地與家人朋友分享寓行善於生活的正面信息。</p>
         <div class="download fade"><img src="./src/images/theme_download/download.png" loading="lazy" alt="">
-          <!-- ★ 可鍵盤操作的按鈕-->
           <div class="btn" tabindex="0" role="button" aria-label="立即下載：開啟主題背景彈窗">
             <div class="text"><img src="./src/images/theme_download/flower.png" loading="lazy" alt="">
               <p>立即下載</p>
@@ -469,12 +456,9 @@
             </div>
           </div>
         </div>
-        <!-- ★ 主題背景彈窗（YouTube 同款樣式）-->
         <div class="wallpaper-popup" aria-hidden="true">
           <div class="container" role="dialog" aria-modal="true" aria-label="主題背景下載"><span class="close-btn" aria-label="關閉">×</span>
-            <div class="preview">
-              <!-- 換成你的示意合成圖--><img src="./src/images/theme_download/download.png" loading="lazy" alt="主題背景預覽示意">
-            </div>
+            <div class="preview"><img src="./src/images/theme_download/download.png" loading="lazy" alt="主題背景預覽示意"></div>
             <div class="actions"><a class="wp-btn" href="./src/wallpaper/DCD2025_Wallpaper_A_Desktop.jpg" target="_blank">主題背景A（水平）</a><a class="wp-btn" href="./src/wallpaper/DCD2025_Wallpaper_B_Desktop.jpg" target="_blank">主題背景B（水平）</a><a class="wp-btn" href="./src/wallpaper/DCD2025_Wallpaper_A_Mobile.jpg" target="_blank">主題背景A（垂直）</a><a class="wp-btn" href="./src/wallpaper/DCD2025_Wallpaper_B_Mobile.jpg" target="_blank">主題背景B（垂直）</a></div>
           </div>
         </div>
@@ -582,7 +566,6 @@
       </div>
     </footer>
   </body>
-  <!-- 只載 jQuery + main.js-->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script defer src="./src/js/main.js"></script>
 </html>
