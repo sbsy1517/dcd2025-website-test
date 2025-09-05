@@ -25,6 +25,45 @@ var domCache = {
   }
 };
 
+// ========================================
+// 滑動配置區塊 - 在這裡調整所有的 offset 數值
+// ========================================
+var scrollConfig = {
+  // 下載區滑動偏移量
+  downloadOffset: 100,
+  
+  // 主題區滑動偏移量（響應式）- 使用負值表示向上偏移
+  themeOffset: {
+    desktop: 250,    // 大螢幕 (>768px)
+    tablet: 200,     // 平板 (≤768px)
+    mobile: 150      // 手機 (≤576px)
+  },
+  
+  // 滑動動畫時間 (毫秒)
+  animationDuration: 600,
+  
+  // 滑動緩動效果
+  easing: 'swing',
+  
+  // 響應式斷點
+  breakpoints: {
+    tablet: 768,
+    mobile: 576
+  },
+  
+  // 取得主題區偏移量（根據螢幕寬度）
+  getThemeOffset: function() {
+    var windowWidth = $(window).width();
+    if (windowWidth <= this.breakpoints.mobile) {
+      return this.themeOffset.mobile;
+    } else if (windowWidth <= this.breakpoints.tablet) {
+      return this.themeOffset.tablet;
+    } else {
+      return this.themeOffset.desktop;
+    }
+  }
+};
+
 // 防抖函數
 function debounce(func, wait) {
   var timeout;
@@ -706,6 +745,62 @@ $(function() {
   });
 });
 
+// --- 平滑滾動到主題區功能（支援響應式偏移）---
+$(function() {
+  // 為所有指向 #theme 的連結添加平滑滾動（包括 signup 區域的主題背景按鈕）
+  $('a[href="#theme"]').on('click', function(e) {
+    e.preventDefault();
+    
+    // 先停止任何現有的滾動動畫
+    $('html, body').stop(true, true);
+    
+    // 使用延遲確保元素位置穩定
+    setTimeout(function() {
+      var target = $('.theme');
+      if (target.length) {
+        // 多次強制重新計算布局
+        document.body.offsetHeight;
+        target[0].offsetHeight;
+        $(window).trigger('resize'); // 觸發 resize 確保所有元素重新計算
+        
+        // 再次強制計算
+        setTimeout(function() {
+          // 使用響應式偏移量配置
+          var offset = scrollConfig.getThemeOffset();
+          var targetOffset = target.offset().top - offset;
+          
+          console.log('Theme button clicked');
+          console.log('Using responsive offset:', offset);
+          console.log('Target position calculated:', targetOffset);
+          console.log('Current scroll position:', $(window).scrollTop());
+          
+          // 使用配置中的動畫時間和緩動效果
+          $('html, body').animate({
+            scrollTop: targetOffset
+          }, {
+            duration: scrollConfig.animationDuration,
+            easing: scrollConfig.easing,
+            complete: function() {
+              console.log('Theme scroll completed at position:', $(window).scrollTop());
+              
+              // 動畫完成後再次檢查位置是否正確
+              setTimeout(function() {
+                var finalTargetOffset = target.offset().top - offset;
+                var currentPosition = $(window).scrollTop();
+                if (Math.abs(currentPosition - finalTargetOffset) > 10) {
+                  console.log('Theme position correction needed, adjusting...');
+                  window.scrollTo(0, finalTargetOffset);
+                }
+              }, 100);
+            }
+          });
+        }, 50);
+      } else {
+        console.log('Theme target element not found!');
+      }
+    }, 100);
+  });
+});
 
 
 // --- 優化的無限循環輪播功能 (支援觸控滑動) ---
