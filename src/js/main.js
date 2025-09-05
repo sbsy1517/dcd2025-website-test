@@ -577,9 +577,9 @@ $(function() {
     
     var target = $('#download');
     if (target.length) {
-      // 計算正確的偏移量：跑馬燈高度 + 一些緩衝空間
+      // 計算正確的偏移量：跑馬燈高度 + 額外緩衝空間讓標題完全可見
       var marqueeHeight = getMarqueeHeight(); // 使用現有的函數
-      var offset = marqueeHeight + 20; // 跑馬燈高度 + 20px 緩衝
+      var offset = marqueeHeight + 50; // 跑馬燈高度 + 50px 緩衝，確保標題不被遮住
       var targetOffset = target.offset().top - offset;
       
       $('html, body').animate({
