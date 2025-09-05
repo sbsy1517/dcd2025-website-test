@@ -670,8 +670,22 @@ $(function() {
         
         // 再次強制計算
         setTimeout(function() {
-          var targetOffset = target.offset().top - 250;
+          // 根據螢幕寺吋設定不同的偏移量
+          var windowWidth = $(window).width();
+          var offset;
           
+          if (windowWidth <= 576) {
+            offset = 150; // 576px 以下使用 -100px
+          } else if (windowWidth <= 768) {
+            offset = 200; // 768px 以下使用 -200px
+          } else {
+            offset = 250; // 大螢幕使用 -250px
+          }
+          
+          var targetOffset = target.offset().top - offset;
+          
+          console.log('Window width:', windowWidth);
+          console.log('Using offset:', offset);
           console.log('Target position calculated:', targetOffset);
           console.log('Current scroll position:', $(window).scrollTop());
           
@@ -686,7 +700,7 @@ $(function() {
               
               // 動畫完成後再次檢查位置是否正確
               setTimeout(function() {
-                var finalTargetOffset = target.offset().top - 250;
+                var finalTargetOffset = target.offset().top - offset;
                 var currentPosition = $(window).scrollTop();
                 if (Math.abs(currentPosition - finalTargetOffset) > 10) {
                   console.log('Position correction needed, adjusting...');
