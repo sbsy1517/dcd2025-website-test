@@ -635,8 +635,10 @@ header
                     top: 45px
                 +container-768px
                     top: 40px
+                    gap: 15px
                 +container-576px
                     top: 35px
+                    gap: 10px
                 img.en
                     // width: 445px
                     width: 400px
@@ -648,7 +650,7 @@ header
                     +container-768px
                         width: 240px
                     +container-576px
-                        widht: 200px
+                        width: 200px
                     +container-414px
                         width: 180px
                 img.cht
@@ -1513,6 +1515,7 @@ header
                             background-color: $pink
                             z-index: 3
                             transition: 0.2s
+                            color: #fff !important
                             &:hover
                                 background-color: $light_pink   
             .img#two
@@ -1576,6 +1579,7 @@ header
                             background-color: $pink
                             z-index: 3
                             transition: 0.2s
+                            color: #fff !important
                             &:hover
                                 background-color: $light_pink  
             .img#three
@@ -1639,6 +1643,7 @@ header
                             background-color: $pink
                             z-index: 3
                             transition: 0.2s
+                            color: #fff !important
                             &:hover
                                 background-color: $light_pink
             .img#four
@@ -1702,6 +1707,7 @@ header
                             background-color: $pink
                             z-index: 3
                             transition: 0.2s
+                            color: #fff !important
                             &:hover
                                 background-color: $light_pink
             .img#five
@@ -1765,6 +1771,7 @@ header
                             background-color: $pink
                             z-index: 3
                             transition: 0.2s
+                            color: #fff !important
                             &:hover
                                 background-color: $light_pink
             .img#six
@@ -1828,6 +1835,7 @@ header
                             background-color: $pink
                             z-index: 3
                             transition: 0.2s
+                            color: #fff !important
                             &:hover
                                 background-color: $light_pink
         .pad
@@ -2070,7 +2078,7 @@ header
                     border-radius: 35px 35px 0 0
                     padding-left: 40px
 
-                    color: #fff
+                    color: #fff !important
                     +container-768px
                         font-size: 28px
                         padding: 12px 0
@@ -2169,7 +2177,7 @@ header
                         font-size: 70px
                         position: absolute
                         font-weight: 900
-                        color: #fff
+                        color: #fff !important
                         // line-height: 30px
                         +container-768px
                             font-size: 40px
@@ -3045,6 +3053,7 @@ header
             padding-top: 32px
             font-size: 18px
             line-height: 35px
+            // color: #fff !important
             
         // +container-1200px
         //     padding: 0 0 80px
@@ -3091,6 +3100,7 @@ header
                 font-weight: 500
                 border-radius: 999px
                 background: $mint
+                color: #fff !important
                 // +container-1200px
                 //     font-size: 18px
                 //     padding: 16px
@@ -4164,8 +4174,8 @@ footer
                     p.note
                         font-size: 13px
                         line-height: 24px
-            a
-                color: #fff
+            a, span
+                color: #fff !important
             .address
                 display: flex
                 align-items: center
@@ -4269,10 +4279,13 @@ footer
                         width: auto
                         img
                             width: 35px
+                        a, span
+                            color: #fff !important
                         a
                             font-size: 18px   // .detail
                             &:hover
                                 color: $yellow
+                        
                         
                         +container-768px
                             gap: 12px

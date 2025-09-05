@@ -889,11 +889,13 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 @media (max-width: 768px) {
   .home_page .content .fv .title {
     top: 40px;
+    gap: 15px;
   }
 }
 @media (max-width: 576px) {
   .home_page .content .fv .title {
     top: 35px;
+    gap: 10px;
   }
 }
 .home_page .content .fv .title img.en {
@@ -912,7 +914,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 576px) {
   .home_page .content .fv .title img.en {
-    widht: 200px;
+    width: 200px;
   }
 }
 @media (max-width: 414px) {
@@ -1977,6 +1979,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   background-color: #FF76B6;
   z-index: 3;
   transition: 0.2s;
+  color: #fff !important;
 }
 .story .board .wrap .img#one .pic .btn a:hover {
   background-color: #FFBBDA;
@@ -2045,6 +2048,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   background-color: #FF76B6;
   z-index: 3;
   transition: 0.2s;
+  color: #fff !important;
 }
 .story .board .wrap .img#two .pic .btn a:hover {
   background-color: #FFBBDA;
@@ -2113,6 +2117,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   background-color: #FF76B6;
   z-index: 3;
   transition: 0.2s;
+  color: #fff !important;
 }
 .story .board .wrap .img#three .pic .btn a:hover {
   background-color: #FFBBDA;
@@ -2181,6 +2186,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   background-color: #FF76B6;
   z-index: 3;
   transition: 0.2s;
+  color: #fff !important;
 }
 .story .board .wrap .img#four .pic .btn a:hover {
   background-color: #FFBBDA;
@@ -2249,6 +2255,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   background-color: #FF76B6;
   z-index: 3;
   transition: 0.2s;
+  color: #fff !important;
 }
 .story .board .wrap .img#five .pic .btn a:hover {
   background-color: #FFBBDA;
@@ -2317,6 +2324,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   background-color: #FF76B6;
   z-index: 3;
   transition: 0.2s;
+  color: #fff !important;
 }
 .story .board .wrap .img#six .pic .btn a:hover {
   background-color: #FFBBDA;
@@ -2599,7 +2607,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   background-color: #FF76B6;
   border-radius: 35px 35px 0 0;
   padding-left: 40px;
-  color: #fff;
+  color: #fff !important;
 }
 @media (max-width: 768px) {
   .donate .content .wrap .block .subtitle {
@@ -2706,7 +2714,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   font-size: 70px;
   position: absolute;
   font-weight: 900;
-  color: #fff;
+  color: #fff !important;
 }
 @media (max-width: 768px) {
   .donate .content .wrap .block .tag p {
@@ -3722,6 +3730,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   font-weight: 500;
   border-radius: 999px;
   background: #41CC94;
+  color: #fff !important;
 }
 @media (max-width: 1024px) {
   .weartocare .prize_content .btn_group .btn {
@@ -5238,8 +5247,8 @@ footer .bg .content .logo p.note {
     line-height: 24px;
   }
 }
-footer .bg .content a {
-  color: #fff;
+footer .bg .content a, footer .bg .content span {
+  color: #fff !important;
 }
 footer .bg .content .address {
   display: flex;
@@ -5378,6 +5387,9 @@ footer .bg .content .detail .d-flex .wrap {
 }
 footer .bg .content .detail .d-flex .wrap img {
   width: 35px;
+}
+footer .bg .content .detail .d-flex .wrap a, footer .bg .content .detail .d-flex .wrap span {
+  color: #fff !important;
 }
 footer .bg .content .detail .d-flex .wrap a {
   font-size: 18px;
