@@ -577,7 +577,10 @@ $(function() {
     
     var target = $('#download');
     if (target.length) {
-      var targetOffset = target.offset().top - 200; // 減去 200px
+      // 計算正確的偏移量：跑馬燈高度 + 一些緩衝空間
+      var marqueeHeight = getMarqueeHeight(); // 使用現有的函數
+      var offset = marqueeHeight + 20; // 跑馬燈高度 + 20px 緩衝
+      var targetOffset = target.offset().top - offset;
       
       $('html, body').animate({
         scrollTop: targetOffset
