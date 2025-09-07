@@ -2621,7 +2621,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 24px 16px;
+  padding: 24px 8px;
   height: 100%;
   min-height: 180px;
   border-radius: 0 0 35px 35px;
@@ -2891,19 +2891,18 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
   border-radius: 15px;
 }
 .donate .content .wrap .block#three .intro p.note {
-  font-size: 14px;
+  font-size: 15px;
+  padding: 0 16px;
 }
 @media (max-width: 1024px) {
   .donate .content .wrap .block#three .intro p.note {
     padding: 0 24px;
-    line-height: 25px;
+    line-height: 1.6;
   }
 }
 @media (max-width: 768px) {
   .donate .content .wrap .block#three .intro p.note {
-    font-size: 12px;
     padding: 0 16px;
-    line-height: 20px;
   }
 }
 .donate .content .wrap .block#three .intro .laptop {
@@ -5188,7 +5187,7 @@ footer .bg .content .logo p.note {
   font-size: 18px;
   font-style: normal;
   line-height: 1.6;
-  left: 30px;
+  padding-left: 30px;
 }
 @media (max-width: 1200px) {
   footer .bg .content .logo {
@@ -5214,6 +5213,7 @@ footer .bg .content .logo p.note {
   footer .bg .content .logo p.note {
     font-size: 16px;
     text-align: center;
+    padding-left: 15px;
   }
 }
 @media (max-width: 576px) {
@@ -5226,6 +5226,7 @@ footer .bg .content .logo p.note {
   }
   footer .bg .content .logo p.note {
     font-size: 15px;
+    padding-left: 0;
   }
 }
 @media (max-width: 414px) {
@@ -6115,7 +6116,7 @@ body.modal-open .marquee {
   color: #318CDD;
   font-size: 18px;
   padding-top: 48px;
-  line-height: 30px;
+  line-height: 1.6;
 }
 @media (max-width: 576px) {
   .terms-popup .container .content h2 {
@@ -6130,7 +6131,7 @@ body.modal-open .marquee {
 .terms-popup .container .content .terms-content ol li {
   font-size: 14px;
   color: #000;
-  line-height: 2;
+  line-height: 1.6;
   letter-spacing: normal;
   list-style-type: decimal;
 }
