@@ -3312,13 +3312,13 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 576px) {
   .weartocare .game .bg .note .wrap .title img.rabbit {
-    height: 180px;
-    top: -90px;
+    height: 160px;
+    top: -80px;
   }
 }
 @media (max-width: 414px) {
   .weartocare .game .bg .note .wrap .title img.rabbit {
-    height: 160px;
+    height: 150px;
     top: -80px;
   }
 }
@@ -3344,7 +3344,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 768px) {
   .weartocare .game .bg .note .wrap .title .text {
-    padding: 24px 60px;
+    padding: 24px 50px;
   }
   .weartocare .game .bg .note .wrap .title .text img {
     height: 40px;
@@ -3355,7 +3355,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
     padding: 16px 40px;
   }
   .weartocare .game .bg .note .wrap .title .text img {
-    height: 35px;
+    height: 30px;
   }
 }
 @media (max-width: 414px) {
@@ -3363,7 +3363,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
     padding: 12px 25px;
   }
   .weartocare .game .bg .note .wrap .title .text img {
-    height: 30px;
+    height: 25px;
   }
 }
 .weartocare .game .bg .note .wrap p {
