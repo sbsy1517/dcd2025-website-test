@@ -5061,7 +5061,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 576px) {
   .sponsor .sponsor_mobile .wrap .img .chest {
-    height: 38px;
+    height: 30px;
   }
 }
 @media (max-width: 414px) {
@@ -5084,7 +5084,7 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 576px) {
   .sponsor .sponsor_mobile .wrap .img .horse {
-    height: 38px;
+    height: 30px;
   }
 }
 @media (max-width: 414px) {
