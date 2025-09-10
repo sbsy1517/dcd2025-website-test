@@ -5066,12 +5066,12 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 414px) {
   .sponsor .sponsor_mobile .wrap .img .chest {
-    height: 32px;
+    height: 28px;
   }
 }
 @media (max-width: 360px) {
   .sponsor .sponsor_mobile .wrap .img .chest {
-    height: 30px;
+    height: 24px;
   }
 }
 .sponsor .sponsor_mobile .wrap .img .horse {
@@ -5089,12 +5089,12 @@ header .mobile-menu .mobile-menu-content .mobile-menu-item:hover {
 }
 @media (max-width: 414px) {
   .sponsor .sponsor_mobile .wrap .img .horse {
-    height: 32px;
+    height: 28px;
   }
 }
 @media (max-width: 360px) {
   .sponsor .sponsor_mobile .wrap .img .horse {
-    height: 30px;
+    height: 24px;
   }
 }
 .sponsor .sponsor_mobile .wrap p {
