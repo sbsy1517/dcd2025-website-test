@@ -36,7 +36,7 @@ html(lang="zh-Hant")
           img(src="./src/images/header/header.svg", alt="")
           img(src="./src/images/header/header.svg", alt="")
       .menu_fix 
-        .logo 
+        a(href="index_cht.html").logo 
           img(src="./src/images/home_page/logo.svg", alt="香港公益金") 
         .wrap 
           a.school.laptop(href="https://app.commchest.org/event/dcd2025/enrolment.aspx" target="_blank") 機構/學校報名
@@ -55,7 +55,7 @@ html(lang="zh-Hant")
           a.mobile-menu-item(href="https://app.commchest.org/event/dcd2025/enrolment.aspx" target="_blank") 機構/學校報名
           a.mobile-menu-item(href="https://www.commchest.org/tc/event/dcd2025/enrolment/form/individual" target="_blank") 個人報名
           a.mobile-menu-item(href="#download") 下載區
-    section.home_page
+    section.home_page#home_page
       
 
       .bg_line
@@ -64,7 +64,7 @@ html(lang="zh-Hant")
         .line#blue
       .content
         .menu
-          .logo
+          a(href="index_cht.html").logo
             img(src="./src/images/home_page/logo.svg", alt="香港公益金")
           .menu_2
             a.school(href="https://app.commchest.org/event/dcd2025/enrolment.aspx" target="_blank") 機構/學校報名
@@ -472,26 +472,36 @@ html(lang="zh-Hant")
                 | (價值HK$500) ;
                 br
                 | 三獎 (15名)：由貝路加有限公司贊助的
-                span.orange Papery Bunni Konbiny 環保便當盒一個或保溫瓶一個 
-                |;
+                span.orange Papery Bunni Konbiny 環保便當盒一個
+                  u 或
+                  |  保溫瓶一個;
                 br
                 |四獎 (10名)：由貝路加有限公司贊助的
-                span.orange Papery Bunni Konbiny 環保飲管一枝及環保餐具套裝一份
-                |。
+                span.orange Papery Bunni Konbiny 環保飲管一枝
+                  u 及
+                  |  環保餐具套裝一份。
                 br
                 |禮品款式及顏色將隨機派發，恕不能選擇。
               .card_group
                 .card.fade
                   .card_title
-                    p 頭獎 (5名)：鞋履免費換領券
+                    p 頭獎 (5名)：
+                      br
+                      |SKECHERS鞋履免費換領券
                   img(src="./src/images/weartocare/shoes.png", data-large="./src/images/weartocare/shoes_big.jpg", loading="lazy", alt="鞋履免費換領券")
                 .card.fade
                   .card_title
-                    p 二奬 (10名)：city'super 禮品卡
+                    p 二奬 (10名)：
+                      br
+                      |city'super 禮品卡
                   img(src="./src/images/weartocare/coupon.png", data-large="./src/images/weartocare/coupon_big.jpg", loading="lazy", alt="city'super 禮品卡")
                 .card.cardthree.fade
                   .card_title
-                    p 三獎 (15名)：環保便當盒
+                    p 三獎 (15名)：
+                      br
+                      |Papery Bunni Konbiny 
+                      br
+                      |環保便當盒
                       span.underline 或
                       |保溫瓶
                   .carousel-container
@@ -511,7 +521,11 @@ html(lang="zh-Hant")
                       .dot(data-slide="1")
                 .card.cardfour.fade
                   .card_title
-                    p 四獎 (10名) ：環保飲管
+                    p 四獎 (10名) ：
+                      br
+                      |Papery Bunni Konbiny 
+                      br
+                      |環保飲管
                       span.underline 及
                       |環保餐具
                   .carousel-container
@@ -555,15 +569,19 @@ html(lang="zh-Hant")
                   li 貼文只會用作推廣本活動，若閣下不想內容被上載本網站／公益金的Facebook專頁或Instagram帳戶，請電郵至
                     a(href="mailto:dress@commchest.org") dress@commchest.org
                     |。
-                  li 活動結束後，公益金將選出40 個最具心思及創意的留言為得獎者，獎品包括：
+                  li 活動結束後，本機構將選出40 個最具心思及創意的留言為得獎者，獎品包括：
                     br
-                    |頭獎（5名）：可獲得由 SKECHERS 贊助的鞋履免費換領券一張（可換領任何價值之鞋款乙對）;
+                    |頭獎（5名）：由 SKECHERS 贊助的鞋履免費換領券一張（可換領任何價值之鞋款乙對）;
                     br
                     |二奬（10名）：由富林工程營造有限公司贊助的 city'super 禮品卡一張（價值HK$500）;
                     br
-                    |三獎（15名）：由貝路加有限公司贊助的 Papery Bunni Konbiny 禮品（價值 HK$200 - HK$238 的環保便當盒或保溫瓶一個）;
+                    |三獎（15名）：由貝路加有限公司贊助的 Papery Bunni Konbiny 禮品（環保便當盒
+                    u 或
+                    |  保溫瓶一個）;
                     br
-                    |四獎（10名）：由貝路加有限公司贊助的 Papery Bunni Konbiny 禮品（價值合共 HK$176 的環保飲管一枝及環保餐具套裝一份）。
+                    |四獎（10名）：由貝路加有限公司贊助的 Papery Bunni Konbiny 禮品（環保飲管一枝
+                    u 及
+                    |  環保餐具套裝一份）。
                     br
                     |禮品款式及顏色將隨機派發，恕不能選擇。
                   li 所有參加作品必須由參加者原創，作品不能同時參加其他活動或曾刊載於任何地方。如作品涉及任何形式的抄襲，參加者將會被取消資格，而不需事先通知。
@@ -664,9 +682,9 @@ html(lang="zh-Hant")
             a(href="https://app.commchest.org/cd/dcd2025/Enrol_Form_www(editable).pdf" target="_blank").btn
               img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
               p 報名表格
-            a(href="#").btn
+            a(href="#").btn.poster
               img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
-              p 海報
+              p 海報 (稍後提供)
             a(href="https://app.commchest.org/cd/dcd2025/GuidelinesForParticipation_Chi_2025.pdf" target="_blank").btn
               img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
               p 活動參加指引
@@ -678,7 +696,7 @@ html(lang="zh-Hant")
             a(href="https://app.commchest.org/cd/dcd2025/DCD25_DonationRecordForm.xlsx" target="_blank").btn
               img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
               p 捐款記錄表
-            a(href="https://app.commchest.org/cd/dcd2025/DCD25_DonationStatisticsForm.xlsx" target="_blank").btn
+            a(href="https://app.commchest.org/cd/dcd2025/DCD25_DonationSummaryForm_Editable.pdf" target="_blank").btn
               img(src="./src/images/signup/pdf.svg", loading="lazy", alt="")
               p 捐款統計表
             a(href="https://app.commchest.org/cd/dcd2025/DCD25_Additional_Request_Form_Editable.pdf" target="_blank").btn
@@ -725,7 +743,7 @@ html(lang="zh-Hant")
             .title 主辦機構
             .img
               img.chest(src="./src/images/sponsor/community_chest.svg", loading="lazy", alt="")
-              img.horse(src="./src/images/sponsor/horse.svg", loading="lazy", alt="")
+              img.horse(src="./src/images/sponsor/jockey_cht.png", loading="lazy", alt="")
             p 香港公益金有賴慈善夥伴 — 香港賽馬會的慷慨資助，得以將全數善款，
               br
               |不扣除任何行政開支，100%撥捐逾160間社會福利會員機構，惠澤社群。
@@ -747,7 +765,7 @@ html(lang="zh-Hant")
             img.harbour(src="./src/images/sponsor/harbour.svg", loading="lazy", alt="")
             img.time_square(src="./src/images/sponsor/time_square.svg", loading="lazy", alt="")
             img.hollywood(src="./src/images/sponsor/hollywood.svg", loading="lazy", alt="")
-        .wrap.fade
+        .wrap.fade.media_partner
           .title 媒體夥伴
           .img
             img.head(src="./src/images/sponsor/head.jpg", loading="lazy", alt="")
@@ -758,7 +776,7 @@ html(lang="zh-Hant")
           .title 主辦機構
           .img
             img.chest(src="./src/images/sponsor/community_chest.svg", loading="lazy", alt="")
-            img.horse(src="./src/images/sponsor/horse.svg", loading="lazy", alt="")
+            img.horse(src="./src/images/sponsor/jockey_cht.png", loading="lazy", alt="")
           p 香港公益金有賴慈善夥伴 — 香港賽馬會的慷慨資助，得以將全數善款，
             br
             |不扣除任何行政開支，100%撥捐逾160間社會福利會員機構，惠澤社群。

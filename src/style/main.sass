@@ -110,9 +110,11 @@ header
             padding: 12px 32px
         .logo
             img
-                height: 40px
+                height: 52px
+                +container-768px
+                    height: 45px
                 +container-576px
-                    height: 25px
+                    height: 40px
         .wrap
             color: $blue
             display: flex
@@ -2168,9 +2170,14 @@ header
                         width: 90px
                         height: 90px
                     +container-576px
-                        width: 75px
-                        height: 75px
-                        top: -18px
+                        width: 70px
+                        height: 70px
+                        top: -10px
+                        left: -29px
+                    // +container-414px
+                    //     width: 60px
+                    //     height: 60px
+                    //     top: -10px
 
                     p
                         // font-size: 80px
@@ -2316,6 +2323,7 @@ header
 
                         p.note
                             font-size: 14px
+                            color: #000
                             +container-1024px
                                 padding: 0 24px
                                 line-height: 25px
@@ -2568,11 +2576,13 @@ header
         +container-1024px
             height: 1400px
         +container-768px
-            height: 1450px
+            height: 1460px
         +container-576px
-            height: 2300px
+            height: 2340px
         +container-500px
-            height: 2150px
+            height: 2200px
+        +container-414px
+            height: 2240px
         .bg
             display: flex
             justify-content: center
@@ -2586,13 +2596,15 @@ header
             // +container-1200px
             //     height: 1800px
             +container-1024px
-                height: 1400px
+                height: 1440px
             +container-768px
-                height: 1450px
+                height: 1480px
             +container-576px
-                height: 2350px
+                height: 2400px
             +container-500px
-                height: 2200px
+                height: 2255px
+            +container-414px
+                height: 2290px
 
             .note   
                 // display: flex
@@ -2608,22 +2620,22 @@ header
                 
                 img.paper
                     filter: drop-shadow(11px 11px 0px rgba(0, 0, 0, 0.25))
-                    width: 1015px
+                    width: 1040px
                     // // height: 1342px
                     // aspect-ratio: 1015px/1342px
 
-                    +container-1200px
-                        width: 1005px
+                    // +container-1200px
+                    //     width: 1040px
                     +container-1024px
-                        width: 805px
+                        width: 870px
                     +container-768px
-                        width: 630px
+                        width: 660px
                     +container-576px
-                        width: 576px
+                        width: 605px
                     +container-500px
-                        width: 540px
-                    // +container-414px
-                    //     width: 540px
+                        width: 565px
+                    +container-414px
+                        width: 575px
                 img.laptop
                     +container-768px
                         display: none
@@ -2796,34 +2808,34 @@ header
                             
                             .card_title
                                 display: flex
-                                height: 68px
+                                height: 90px
                                 padding: 10px
                                 justify-content: center
                                 align-items: center
                                 gap: 10px
                                 align-self: stretch
                                 +container-1024px
-                                    height: 48px
+                                    height: 80px
 
                                 p
                                     color: $bg_yellow
                                     text-align: center
                                     // font-size: 24px
                                     font-size: 18px
-                                    // line-height: 30px
+                                    line-height: 1.5
                                     font-weight: 700
-                                    line-height: 45px
+                                    // line-height: 45px
                                     padding: 64px 0
                                     +container-1024px
                                         font-size: 16px
-                                        line-height: 35px
+                                        // line-height: 35px
                                     +container-768px
                                         font-size: 14px
-                                        line-height: 30px
+                                        // line-height: 30px
 
                                     span.underline
                                         border-bottom: 1px solid $bg_yellow
-                                        padding-bottom: 4px  
+                                        // padding-bottom: 4px  
 
 
                             // +container-1200px
@@ -3680,6 +3692,10 @@ header
                         img
                             
                             filter: brightness(0) invert(1)
+            a.poster
+                pointer-events: none
+                cursor: default
+                opacity: 0.6
 
 .sponsor
     .sponsor_laptop
@@ -3721,6 +3737,7 @@ header
             border-bottom: 2px solid #C5C5C5
             flex-direction: row
             justify-content: start
+            align-items: stretch
             
             .img
                 display: flex
@@ -3732,35 +3749,38 @@ header
                 img
                     // width: 265px
                     // height: 60px
-                    height: 50px
+                    // height: 50px
+                    width: 200px
                     // aspect-ratio: 53/12
                     // +container-1200px
                     //     height: 45px
             .left
-                padding-right: 56px
+                padding-right: 48px
                 border-right: 2px solid #C5C5C5
                 +container-1024px
                     border-right: none
                     padding: 0 0 24px 0
             .right
-                padding-left: 56px
+                padding-left: 48px
                 // border-left: 2px solid #C5C5C5
                 // +container-1024px
                 //     border-left: none
+                gap: 16px
                 .img
                     // gap: 40px
                     // margin-bottom: 10px
-                    padding-bottom: 20px
+                    // padding-bottom: 20px
                     img
-                        height: 50px
+                        height: 70px
+                        width: 70px
         .middle
             border-bottom: 2px solid #C5C5C5
             flex-direction: row
-            gap: 32px
+            // gap: 32px
             justify-content: start
             +container-1024px
                 flex-direction: column
-                gap: 0
+                // gap: 0
             
                     
             .img
@@ -3775,9 +3795,9 @@ header
                 img.hollywood
                     height: 20px
                 img.job
-                    height: 24px
+                    height: 30px
                 img.head
-                    height: 50px
+                    height: 52px
                 img.new
                     height: 25px
                 // +container-1200px
@@ -3795,6 +3815,9 @@ header
                 border-right: 2px solid #C5C5C5
                 // +container-1024px
                 //     border-right: none
+            .right
+                padding-left: 48px
+                gap: 24px
         .bottom
             // border-bottom: 2px solid #C5C5C5
             .img
@@ -3861,11 +3884,11 @@ header
                 padding: 24px 48px
             +container-414px
                 width: 100%
-                padding: 20px 32px
+                padding: 20px 0px
                 box-sizing: border-box
                 gap: 20px
             +container-360px
-                padding: 16px 32px
+                padding: 16px 0px
                 gap: 16px
                 
             .title
@@ -3895,25 +3918,27 @@ header
                     gap: 16px
                     
                 .hang_bank
-                    height: 55px
+                    height: auto
+                    width: 190px
                     +container-768px
-                        height: 45px
+                        width: 170px
                     +container-576px
-                        height: 40px
+                        width: 140px
                     +container-414px
-                        height: 35px
+                        width: 130px
                     +container-360px
-                        height: 30px
+                        width: 120px
                 .nameson
-                    height: 55px
+                    height: auto
+                    width: 190px
                     +container-768px
-                        height: 45px
+                        width: 170px
                     +container-576px
-                        height: 40px
+                        width: 140px
                     +container-414px
-                        height: 35px
+                        width: 130px
                     +container-360px
-                        height: 30px
+                        width: 120px
                 .perfit_logo
                     height: 60px
                     +container-768px
@@ -3965,15 +3990,15 @@ header
                     +container-360px
                         height: 20px
                 .head
-                    height: 48px
+                    height: 55px
                     +container-768px
-                        height: 40px
+                        height: 47px
                     +container-576px
-                        height: 34px
+                        height: 39px
                     +container-414px
-                        height: 28px
+                        height: 33px
                     +container-360px
-                        height: 24px
+                        height: 29px
                 .new
                     height: 25px
                     +container-768px
@@ -3989,21 +4014,21 @@ header
                     +container-768px
                         height: 53px
                     +container-576px
-                        height: 45px
-                    +container-414px
                         height: 38px
-                    +container-360px
+                    +container-414px
                         height: 32px
+                    +container-360px
+                        height: 30px
                 .horse
                     height: 63px
                     +container-768px
                         height: 53px
                     +container-576px
-                        height: 45px
-                    +container-414px
                         height: 38px
-                    +container-360px
+                    +container-414px
                         height: 32px
+                    +container-360px
+                        height: 30px
                         
             p
                 color: $text_brown
@@ -4025,11 +4050,19 @@ header
                 +container-414px
                     font-size: 13px
                     line-height: 22px
-                    padding: 10px 0 20px
+                    padding: 10px 32px 20px
                 +container-360px
                     font-size: 12px
                     line-height: 20px
-                    padding: 8px 0 16px
+                    padding: 8px 16px 16px
+        .media_partner
+            gap: 20px
+            +container-576px
+                gap: 16px
+            +container-414px
+                gap: 12px
+            +container-360px
+                gap: 10px
         .bottom
             border: none
             // padding-bottom: 16px
@@ -4136,7 +4169,7 @@ footer
                     img
                         width: 300px
                     p.note
-                        font-size: 20px
+                        // font-size: 20px
                         line-height: 40px
                 
                 +container-768px
@@ -4181,7 +4214,7 @@ footer
             .address
                 display: flex
                 align-items: center
-                flex-wrap: wrap
+                
                 justify-content: center
                 margin-bottom: 36px
                 max-width: 100%
@@ -4190,19 +4223,19 @@ footer
                 
                 +container-768px
                     margin-bottom: 24px
-                
+                    padding: 0
                 +container-576px
                     margin-bottom: 20px
-                    padding: 0 16px
+                    // padding: 0 16px
                 
                 +container-414px
                     margin-bottom: 18px
-                    padding: 0 12px
+                    // padding: 0 12px
                 
                 +container-360px
                     margin-bottom: 16px
-                    padding: 0 10px
-                    width: 300px
+                    // padding: 0 10px
+                    // width: 300px
                     
                 img
                     width: 45px
@@ -4255,16 +4288,23 @@ footer
                 flex-wrap: wrap
                 
                 +container-768px
-                    width: max-content
+                    width: auto
                     margin: 0 auto
+                    justify-content: start
+                    align-items: start
                     padding: 36px 20px
+                    max-width: 400px
+                +container-576px
+                    max-width: 300px
+                +container-414px
+                    max-width: 260px
                     
                 .d-flex
                     display: grid
                     grid-template-columns: 1fr 1fr
                     align-items: center
                     gap: 24px 56px
-                    margin-left: 12px
+                    // margin-left: 12px
                     
                     +container-768px
                         display: flex
@@ -4436,36 +4476,30 @@ footer
                 bottom: 30px
                 gap: 8px
                 img.rabbit
-                    width: 40px
+                    width: 26px
                 img.copyright
-                    width: 24px
+                    width: 19px
             
             +container-576px
                 left: 16px
                 bottom: 25px
                 gap: 6px
                 img.rabbit
-                    width: 36px
+                    width: 19px
                 img.copyright
-                    width: 22px
+                    width: 13px
             
             +container-414px
                 left: 12px
                 bottom: 20px
                 gap: 5px
-                img.rabbit
-                    width: 32px
-                img.copyright
-                    width: 20px
+                
             
             +container-360px
                 left: 10px
                 bottom: 16px
                 gap: 4px
-                img.rabbit
-                    width: 28px
-                img.copyright
-                    width: 18px
+                
             
 
 /* ====== 開彈窗時鎖住背景（iOS 也穩） ====== */
