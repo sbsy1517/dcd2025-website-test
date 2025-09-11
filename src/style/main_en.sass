@@ -2148,7 +2148,7 @@ header
                 // font-size: 24px
                 font-size: 18px
                 text-align: center
-                line-height: 2.5
+                line-height: 1.7
                 color: $bg_yellow
                 letter-spacing: 1px 
                 font-weight: 500
@@ -2166,19 +2166,19 @@ header
                     
                 .pink_btn
                     // margin: 10px 0
-                    padding: 8px 12px    
+                    padding: 4px 7px    
                     justify-content: center
                     align-items: center
                     background-color: $pink
                     border-radius: 999px
-                    margin: 0 8px
+                    margin: 4px
                 .blue_btn
-                    padding: 8px 12px    
+                    padding: 4px 7px
                     justify-content: center
                     align-items: center
                     background-color: $blue
                     border-radius: 999px
-                    margin: 0 8px
+                    margin: 4px
                     &:hover
                         background-color: $hover_blue
                 .hl
@@ -2192,7 +2192,7 @@ header
                 +container-768px
                     display: block
                     padding: 0 24px
-                    line-height: 2.5rem
+                    // line-height: 2.5rem
 
 .weartocare
     display: flex
@@ -3518,19 +3518,21 @@ header
                 display: flex
                 justify-content: center
                 align-items: center
-                gap: 32px
-                img.harbour
-                    height: 28px
-                img.time_square
-                    height: 38px
-                img.hollywood
-                    height: 20px
-                img.job
-                    height: 30px
-                img.head
-                    height: 52px
-                img.new
-                    height: 25px
+                gap: 43px
+                img
+                    height: 48px
+                // img.harbour
+                //     height: 28px
+                // img.time_square
+                //     height: 38px
+                // img.hollywood
+                //     height: 20px
+                // img.job
+                //     height: 30px
+                // img.head
+                //     height: 52px
+                // img.new
+                //     height: 25px
                 // +container-1200px
                 //     gap: 56px
                 //     .harbour
@@ -3548,7 +3550,7 @@ header
                 //     border-right: none
             .right
                 padding-left: 48px
-                gap: 24px
+                // gap: 24px
         .bottom
             // border-bottom: 2px solid #C5C5C5
             .img
@@ -3569,10 +3571,9 @@ header
                 color: $text_brown
                 padding: 32px 0
                 // font-size: 20px
-                width: 570px
                 font-size: 16px
                 font-style: normal
-                line-height: 1.6
+                line-height: 30px /* 200% */
                 // +container-1200px
                 //     font-size: 18px
     .sponsor_mobile
@@ -3648,11 +3649,12 @@ header
                     gap: 20px
                 +container-360px
                     gap: 16px
+                img
+                    height: 32px
                     
                 .hang_bank
-                    // height: 55px
-                    width: 190px
                     height: auto
+                    width: 190px
                     +container-768px
                         width: 170px
                     +container-576px
@@ -3662,9 +3664,8 @@ header
                     +container-360px
                         width: 120px
                 .nameson
-                    // height: 55px
-                    width: 190px
                     height: auto
+                    width: 190px
                     +container-768px
                         width: 170px
                     +container-576px
@@ -3683,86 +3684,86 @@ header
                         height: 40px
                     +container-360px
                         height: 35px
-                .harbour
-                    height: 40px
-                    +container-768px
-                        height: 35px
-                    +container-576px
-                        height: 30px
-                    +container-414px
-                        height: 25px
-                    +container-360px
-                        height: 22px
-                .time_square
-                    height: 50px
-                    +container-768px
-                        height: 42px
-                    +container-576px
-                        height: 36px
-                    +container-414px
-                        height: 30px
-                    +container-360px
-                        height: 26px
-                .hollywood
-                    height: 28px
-                    +container-768px
-                        height: 24px
-                    +container-576px
-                        height: 20px
-                    +container-414px
-                        height: 18px
-                    +container-360px
-                        height: 16px
-                .job
-                    height: 35px
-                    +container-768px
-                        height: 30px
-                    +container-576px
-                        height: 26px
-                    +container-414px
-                        height: 22px
-                    +container-360px
-                        height: 20px
-                .head
-                    height: 55px
-                    +container-768px
-                        height: 47px
-                    +container-576px
-                        height: 39px
-                    +container-414px
-                        height: 33px
-                    +container-360px
-                        height: 29px
-                .new
-                    height: 25px
-                    +container-768px
-                        height: 22px
-                    +container-576px
-                        height: 20px
-                    +container-414px
-                        height: 18px
-                    +container-360px
-                        height: 16px
+                // .harbour
+                //     height: 40px
+                //     +container-768px
+                //         height: 35px
+                //     +container-576px
+                //         height: 30px
+                //     +container-414px
+                //         height: 25px
+                //     +container-360px
+                //         height: 22px
+                // .time_square
+                //     height: 50px
+                //     +container-768px
+                //         height: 42px
+                //     +container-576px
+                //         height: 36px
+                //     +container-414px
+                //         height: 30px
+                //     +container-360px
+                //         height: 26px
+                // .hollywood
+                //     height: 28px
+                //     +container-768px
+                //         height: 24px
+                //     +container-576px
+                //         height: 20px
+                //     +container-414px
+                //         height: 18px
+                //     +container-360px
+                //         height: 16px
+                // .job
+                //     height: 35px
+                //     +container-768px
+                //         height: 30px
+                //     +container-576px
+                //         height: 26px
+                //     +container-414px
+                //         height: 22px
+                //     +container-360px
+                //         height: 20px
+                // .head
+                //     height: 55px
+                //     +container-768px
+                //         height: 47px
+                //     +container-576px
+                //         height: 39px
+                //     +container-414px
+                //         height: 33px
+                //     +container-360px
+                //         height: 29px
+                // .new
+                //     height: 25px
+                //     +container-768px
+                //         height: 22px
+                //     +container-576px
+                //         height: 20px
+                //     +container-414px
+                //         height: 18px
+                //     +container-360px
+                //         height: 16px
                 .chest
                     height: 63px
                     +container-768px
                         height: 53px
                     +container-576px
-                        height: 30px
+                        height: 38px
                     +container-414px
-                        height: 28px
+                        height: 32px
                     +container-360px
-                        height: 24px
+                        height: 30px
                 .horse
                     height: 63px
                     +container-768px
                         height: 53px
                     +container-576px
-                        height: 30px
+                        height: 38px
                     +container-414px
-                        height: 28px
+                        height: 32px
                     +container-360px
-                        height: 24px
+                        height: 30px
                         
             p
                 color: $text_brown
@@ -3770,25 +3771,24 @@ header
                 // font-size: 20px
                 font-size: 16px
                 font-style: normal
-                // line-height: 30px /* 200% */
-                line-height: 1.6
+                line-height: 30px /* 200% */
                 text-align: center
                 
                 +container-768px
                     font-size: 15px
-                    // line-height: 26px
+                    line-height: 26px
                     padding: 14px 0 28px
                 +container-576px
                     font-size: 14px
-                    // line-height: 24px
+                    line-height: 24px
                     padding: 12px 0 24px
                 +container-414px
                     font-size: 13px
-                    // line-height: 22px
+                    line-height: 22px
                     padding: 10px 32px 20px
                 +container-360px
                     font-size: 12px
-                    // line-height: 20px
+                    line-height: 20px
                     padding: 8px 16px 16px
         .media_partner
             gap: 20px
@@ -3798,25 +3798,13 @@ header
                 gap: 12px
             +container-360px
                 gap: 10px
-        // +container-576px
-        //         width: 95%
-        //         gap: 24px
-        //         padding: 24px 48px
-        //     +container-414px
-        //         width: 100%
-        //         padding: 20px 32px
-        //         box-sizing: border-box
-        //         gap: 20px
-        //     +container-360px
-        //         padding: 16px 32px
-        //         gap: 16px
         .bottom
             border: none
             // padding-bottom: 16px
             
         +container-1024px
             display: flex
-        
+            
             
 
 footer
@@ -3900,7 +3888,7 @@ footer
                 flex-direction: column
                 justify-content: flex-end
                 align-items: center
-                gap: 32px
+                gap: 40px
                 border-bottom: 5px dashed rgba(255, 255, 255, 0.17)
                 
                 img
@@ -3928,7 +3916,7 @@ footer
                 
                 +container-768px
                     // width: 90%
-                    // padding: 32px 20px
+                    padding-bottom: 24px
                     gap: 24px
                     img
                         width: 240px
@@ -3937,33 +3925,40 @@ footer
                         // line-height: 32px
                         text-align: center
                         padding-left: 15px
+                        // padding-bottom: 24px
                 
                 +container-576px
                     // padding: 28px 16px
+                    padding-bottom: 20px
                     gap: 20px
                     img
                         width: 200px
                     p.note
                         font-size: 15px
                         padding-left: 0
+                        // padding-bottom: 20px
                         // line-height: 28px
                 
                 +container-414px
                     // padding: 24px 12px
+                    padding-bottom: 16px
                     gap: 16px
                     img
                         width: 180px
                     p.note
                         font-size: 14px
+                        // padding-bottom: 16px
                         // line-height: 26px
                 
                 +container-360px
                     // padding: 20px 10px
+                    padding-bottom: 14px
                     gap: 14px
                     img
                         width: 160px
                     p.note
                         font-size: 13px
+                        // padding-bottom: 14px
                         // line-height: 24px
             a, span
                 color: #fff !important
